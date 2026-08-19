@@ -124,13 +124,9 @@
     </div>
     <img class="hug-image" id="hugImage" src="hug_couple.png" alt="拥抱" draggable="false">
     <img class="kiss-image" id="kissImage" src="" alt="亲吻" draggable="false">
-    <div class="kiss-dot" id="dotMaleForehead" data-target="male" data-part="forehead"></div>
-    <div class="kiss-dot" id="dotMaleCheek" data-target="male" data-part="cheek"></div>
     <div class="kiss-dot" id="dotMaleMouth" data-target="male" data-part="mouth"></div>
-    <div class="kiss-dot" id="dotFemaleForehead" data-target="female" data-part="forehead"></div>
-    <div class="kiss-dot" id="dotFemaleCheek" data-target="female" data-part="cheek"></div>
     <div class="kiss-dot" id="dotFemaleMouth" data-target="female" data-part="mouth"></div>
-    <div class="kiss-hint" id="kissHint">点击亲吻部位 ♡</div>
+    <div class="kiss-hint" id="kissHint">点击嘴唇亲吻 ♡</div>
   </div>
   <div class="speech-bubble" id="maleBubble"></div>
   <div class="speech-bubble" id="femaleBubble"></div>
@@ -203,18 +199,14 @@ else if(mode==='chat'){femaleChar.classList.add('chat-female');changeBtn.classLi
 changeBtn.addEventListener('click',()=>{maleBubble.classList.remove('show');femaleBubble.classList.remove('show');currentWordIndex=(currentWordIndex+1)%loveWords.length;setTimeout(showChat,300);});
 function positionDots(){const scene=document.getElementById('scene');const sr=scene.getBoundingClientRect();const mr=maleChar.getBoundingClientRect();const fr=femaleChar.getBoundingClientRect();
 const mLeft=mr.left-sr.left;mTop=mr.top-sr.top;
-// 男生侧面朝右，面部在右侧
-document.getElementById('dotMaleForehead').style.left=(mLeft+mr.width*0.75)+'px';document.getElementById('dotMaleForehead').style.top=(mTop+mr.height*0.1)+'px';
-document.getElementById('dotMaleCheek').style.left=(mLeft+mr.width*0.85)+'px';document.getElementById('dotMaleCheek').style.top=(mTop+mr.height*0.17)+'px';
-document.getElementById('dotMaleMouth').style.left=(mLeft+mr.width*0.88)+'px';document.getElementById('dotMaleMouth').style.top=(mTop+mr.height*0.23)+'px';
 const fLeft=fr.left-sr.left;fTop=fr.top-sr.top;
-// 女生侧面朝左，面部在左侧
-document.getElementById('dotFemaleForehead').style.left=(fLeft+fr.width*0.25)+'px';document.getElementById('dotFemaleForehead').style.top=(fTop+fr.height*0.1)+'px';
-document.getElementById('dotFemaleCheek').style.left=(fLeft+fr.width*0.15)+'px';document.getElementById('dotFemaleCheek').style.top=(fTop+fr.height*0.17)+'px';
-document.getElementById('dotFemaleMouth').style.left=(fLeft+fr.width*0.12)+'px';document.getElementById('dotFemaleMouth').style.top=(fTop+fr.height*0.23)+'px';}
+// 男生侧面朝右，嘴唇在面部右侧
+document.getElementById('dotMaleMouth').style.left=(mLeft+mr.width*0.86)+'px';document.getElementById('dotMaleMouth').style.top=(mTop+mr.height*0.26)+'px';
+// 女生侧面朝左，嘴唇在面部左侧
+document.getElementById('dotFemaleMouth').style.left=(fLeft+fr.width*0.14)+'px';document.getElementById('dotFemaleMouth').style.top=(fTop+fr.height*0.26)+'px';}
 dots.forEach(dot=>{dot.addEventListener('click',()=>{const target=dot.dataset.target;const part=dot.dataset.part;kissHint.classList.remove('show');dots.forEach(d=>d.classList.remove('show'));
-const imgMap={male:{forehead:'kiss_f_forehead.png',cheek:'kiss_f_cheek.png',mouth:'kiss_f_mouth.png'},female:{forehead:'kiss_m_forehead.png',cheek:'kiss_m_cheek.png',mouth:'kiss_m_mouth.png'}};
-kissImage.src=imgMap[target][part];
+const imgMap={male:'kiss_f_mouth.png',female:'kiss_m_mouth.png'};
+kissImage.src=imgMap[target];
 kissImage.classList.remove('kiss-forehead','kiss-cheek','kiss-mouth');
 kissImage.classList.add('kiss-'+part);
 maleChar.classList.add('fade-out');femaleChar.classList.add('fade-out');
