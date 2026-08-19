@@ -25,12 +25,15 @@
   .couple{position:relative;z-index:8;display:flex;align-items:flex-end;gap:10px;margin-bottom:60px;}
   .character{position:relative;transition:transform 0.6s cubic-bezier(.34,1.56,.64,1);display:flex;align-items:flex-end;}
   .character img{display:block;height:52vh;max-height:460px;width:auto;filter:drop-shadow(0 8px 25px rgba(0,0,0,.4));animation:idleFloat 4s ease-in-out infinite;}
+  .character .img-side{display:none;}
+  .character.side-view .img-front{display:none;}
+  .character.side-view .img-side{display:block;}
   .char-female img{animation-delay:-2s;}
   @keyframes idleFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(0.5deg)}}
-  .character.hug-male{transform:translateX(45px) rotate(-2deg);}
-  .character.hug-female{transform:translateX(-45px) rotate(2deg);}
-  .character.kiss-male{transform:translateX(55px) rotate(-6deg);}
-  .character.kiss-female{transform:translateX(-55px) rotate(6deg);}
+  .character.hug-male{transform:translateX(50px);}
+  .character.hug-female{transform:translateX(-50px);}
+  .character.kiss-male{transform:translateX(60px);}
+  .character.kiss-female{transform:translateX(-60px);}
   .character.chat-female{transform:translateX(-25px) rotate(-6deg);}
   .buttons{position:absolute;bottom:3%;left:50%;transform:translateX(-50%);display:flex;gap:14px;z-index:20;flex-wrap:wrap;justify-content:center;}
   .mode-btn{padding:11px 22px;border:none;border-radius:30px;font-family:'ZCOOL KuaiLe',sans-serif;font-size:1.05em;white-space:nowrap;background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;cursor:pointer;box-shadow:0 4px 15px rgba(232,90,127,.4),inset 0 1px 0 rgba(255,255,255,.3);transition:all .3s ease;}
@@ -101,10 +104,12 @@
     </div>
     <div class="couple" id="couple">
       <div class="character char-male" id="maleChar">
-        <img src="male_resized.png" alt="男生" draggable="false">
+        <img class="img-front" src="male_resized.png" alt="男生" draggable="false">
+        <img class="img-side" src="male_side_resized.png" alt="男生侧面" draggable="false">
       </div>
       <div class="character char-female" id="femaleChar">
-        <img src="female_resized.png" alt="女生" draggable="false">
+        <img class="img-front" src="female_resized.png" alt="女生" draggable="false">
+        <img class="img-side" src="female_side_resized.png" alt="女生侧面" draggable="false">
       </div>
     </div>
     <div class="kiss-dot" id="dotMaleForehead" data-target="male" data-part="forehead"></div>
@@ -180,22 +185,24 @@ let currentWordIndex=0;
 function positionBubbles(){const mr=maleChar.getBoundingClientRect();const fr=femaleChar.getBoundingClientRect();maleBubble.style.left=(mr.left+mr.width*0.3)+'px';maleBubble.style.top=(mr.top+10)+'px';femaleBubble.style.left=(fr.left+fr.width*0.5)+'px';femaleBubble.style.top=(fr.top+10)+'px';}
 function showChat(){positionBubbles();maleBubble.textContent=loveWords[currentWordIndex].male;femaleBubble.textContent=loveWords[currentWordIndex].female;maleBubble.classList.add('show');setTimeout(()=>femaleBubble.classList.add('show'),800);}
 document.querySelectorAll('.mode-btn').forEach(btn=>{btn.addEventListener('click',()=>{const mode=btn.dataset.mode;document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));if(mode==='letter'){resetAll();document.getElementById('letterMode').classList.add('show');return;}btn.classList.add('active');resetAll();
-if(mode==='hug'){maleChar.classList.add('hug-male');femaleChar.classList.add('hug-female');startHearts();}
-else if(mode==='kiss'){kissHint.classList.add('show');setTimeout(()=>{positionDots();dots.forEach(d=>d.classList.add('show'));},400);startHearts();}
+if(mode==='hug'){maleChar.classList.add('side-view','hug-male');femaleChar.classList.add('side-view','hug-female');startHearts();}
+else if(mode==='kiss'){maleChar.classList.add('side-view');femaleChar.classList.add('side-view');kissHint.classList.add('show');setTimeout(()=>{positionDots();dots.forEach(d=>d.classList.add('show'));},400);startHearts();}
 else if(mode==='chat'){femaleChar.classList.add('chat-female');changeBtn.classList.add('show');currentWordIndex=Math.floor(Math.random()*loveWords.length);showChat();startHearts();}});});
 changeBtn.addEventListener('click',()=>{maleBubble.classList.remove('show');femaleBubble.classList.remove('show');currentWordIndex=(currentWordIndex+1)%loveWords.length;setTimeout(showChat,300);});
 function positionDots(){const scene=document.getElementById('scene');const sr=scene.getBoundingClientRect();const mr=maleChar.getBoundingClientRect();const fr=femaleChar.getBoundingClientRect();
 const mLeft=mr.left-sr.left;mTop=mr.top-sr.top;
-document.getElementById('dotMaleForehead').style.left=(mLeft+mr.width*0.5)+'px';document.getElementById('dotMaleForehead').style.top=(mTop+mr.height*0.12)+'px';
-document.getElementById('dotMaleCheek').style.left=(mLeft+mr.width*0.7)+'px';document.getElementById('dotMaleCheek').style.top=(mTop+mr.height*0.25)+'px';
-document.getElementById('dotMaleMouth').style.left=(mLeft+mr.width*0.5)+'px';document.getElementById('dotMaleMouth').style.top=(mTop+mr.height*0.3)+'px';
+// 男生侧面朝右，面部在右侧
+document.getElementById('dotMaleForehead').style.left=(mLeft+mr.width*0.75)+'px';document.getElementById('dotMaleForehead').style.top=(mTop+mr.height*0.1)+'px';
+document.getElementById('dotMaleCheek').style.left=(mLeft+mr.width*0.85)+'px';document.getElementById('dotMaleCheek').style.top=(mTop+mr.height*0.17)+'px';
+document.getElementById('dotMaleMouth').style.left=(mLeft+mr.width*0.88)+'px';document.getElementById('dotMaleMouth').style.top=(mTop+mr.height*0.23)+'px';
 const fLeft=fr.left-sr.left;fTop=fr.top-sr.top;
-document.getElementById('dotFemaleForehead').style.left=(fLeft+fr.width*0.5)+'px';document.getElementById('dotFemaleForehead').style.top=(fTop+fr.height*0.12)+'px';
-document.getElementById('dotFemaleCheek').style.left=(fLeft+fr.width*0.25)+'px';document.getElementById('dotFemaleCheek').style.top=(fTop+fr.height*0.25)+'px';
-document.getElementById('dotFemaleMouth').style.left=(fLeft+fr.width*0.5)+'px';document.getElementById('dotFemaleMouth').style.top=(fTop+fr.height*0.3)+'px';}
+// 女生侧面朝左，面部在左侧
+document.getElementById('dotFemaleForehead').style.left=(fLeft+fr.width*0.25)+'px';document.getElementById('dotFemaleForehead').style.top=(fTop+fr.height*0.1)+'px';
+document.getElementById('dotFemaleCheek').style.left=(fLeft+fr.width*0.15)+'px';document.getElementById('dotFemaleCheek').style.top=(fTop+fr.height*0.17)+'px';
+document.getElementById('dotFemaleMouth').style.left=(fLeft+fr.width*0.12)+'px';document.getElementById('dotFemaleMouth').style.top=(fTop+fr.height*0.23)+'px';}
 dots.forEach(dot=>{dot.addEventListener('click',()=>{const target=dot.dataset.target;const part=dot.dataset.part;kissHint.classList.remove('show');dots.forEach(d=>d.classList.remove('show'));
-if(target==='female'){maleChar.classList.add('kiss-male');setTimeout(()=>{const fr=femaleChar.getBoundingClientRect();const kx=fr.left+fr.width*0.5;const ky=fr.top+fr.height*0.2;for(let i=0;i<6;i++)setTimeout(()=>spawnHeart(kx-25+Math.random()*50,ky+Math.random()*25),i*100);},450);setTimeout(()=>{maleChar.classList.remove('kiss-male');dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');},1600);}
-else{femaleChar.classList.add('kiss-female');setTimeout(()=>{const mr=maleChar.getBoundingClientRect();const kx=mr.left+mr.width*0.5;const ky=mr.top+mr.height*0.2;for(let i=0;i<6;i++)setTimeout(()=>spawnHeart(kx-25+Math.random()*50,ky+Math.random()*25),i*100);},450);setTimeout(()=>{femaleChar.classList.remove('kiss-female');dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');},1600);}});});
+if(target==='female'){maleChar.classList.add('kiss-male');setTimeout(()=>{const fr=femaleChar.getBoundingClientRect();const kx=fr.left+fr.width*0.15;const ky=fr.top+fr.height*0.18;for(let i=0;i<6;i++)setTimeout(()=>spawnHeart(kx-25+Math.random()*50,ky+Math.random()*25),i*100);},450);setTimeout(()=>{maleChar.classList.remove('kiss-male');dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');},1600);}
+else{femaleChar.classList.add('kiss-female');setTimeout(()=>{const mr=maleChar.getBoundingClientRect();const kx=mr.left+mr.width*0.85;const ky=mr.top+mr.height*0.18;for(let i=0;i<6;i++)setTimeout(()=>spawnHeart(kx-25+Math.random()*50,ky+Math.random()*25),i*100);},450);setTimeout(()=>{femaleChar.classList.remove('kiss-female');dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');},1600);}});});
 const envelopeWrapper=document.getElementById('envelopeWrapper');
 const envelope=document.getElementById('envelope');
 const letterPaper=document.getElementById('letterPaper');
