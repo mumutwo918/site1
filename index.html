@@ -200,8 +200,8 @@ changeBtn.addEventListener('click',()=>{maleBubble.classList.remove('show');fema
 function positionDots(){const scene=document.getElementById('scene');const sr=scene.getBoundingClientRect();const mr=maleChar.getBoundingClientRect();const fr=femaleChar.getBoundingClientRect();
 const mLeft=mr.left-sr.left;const mTop=mr.top-sr.top;
 const fLeft=fr.left-sr.left;const fTop=fr.top-sr.top;
-document.getElementById('dotMaleMouth').style.left=(mLeft+mr.width*0.82)+'px';document.getElementById('dotMaleMouth').style.top=(mTop+mr.height*0.28)+'px';
-document.getElementById('dotFemaleMouth').style.left=(fLeft+fr.width*0.18)+'px';document.getElementById('dotFemaleMouth').style.top=(fTop+fr.height*0.30)+'px';}
+document.getElementById('dotMaleMouth').style.left=(mLeft+mr.width*0.88)+'px';document.getElementById('dotMaleMouth').style.top=(mTop+mr.height*0.33)+'px';
+document.getElementById('dotFemaleMouth').style.left=(fLeft+fr.width*0.12)+'px';document.getElementById('dotFemaleMouth').style.top=(fTop+fr.height*0.35)+'px';}
 function doKiss(target){
 const mc=document.getElementById('maleChar');
 const fc=document.getElementById('femaleChar');
