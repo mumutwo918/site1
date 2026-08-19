@@ -57,7 +57,7 @@
   .envelope-flap{position:absolute;top:0;left:0;width:100%;height:50%;background:linear-gradient(135deg,#ffd6e0,#ffc2d1);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s ease;z-index:3;}
   .envelope.open .envelope-flap{transform:rotateX(180deg);z-index:1;}
   .envelope-body{position:absolute;bottom:0;left:0;width:100%;height:70%;background:linear-gradient(135deg,#fff0f5,#ffe4ec);z-index:2;}
-  .heart-seal{position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;z-index:5;display:flex;align-items:center;justify-content:center;transition:opacity .3s;}
+  .heart-seal{position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;z-index:20;display:flex;align-items:center;justify-content:center;transition:opacity .3s;cursor:pointer;pointer-events:auto;}
   .envelope.open .heart-seal{opacity:0;pointer-events:none;}
   .heart-seal svg{width:100%;height:100%;filter:drop-shadow(0 4px 10px rgba(232,90,127,.4));animation:heartBeat 1.5s infinite;}
   @keyframes heartBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
@@ -515,7 +515,23 @@ const envelope=document.getElementById('envelope');
 const letterPaper=document.getElementById('letterPaper');
 const closeLetter=document.getElementById('closeLetter');
 const letterMode=document.getElementById('letterMode');
-envelopeWrapper.addEventListener('click',()=>{envelope.classList.add('open');setTimeout(()=>letterPaper.classList.add('show'),400);});
+// 用坐标判断点击区域，避免子元素层级遮挡
+letterMode.addEventListener('click',(e)=>{
+  if(letterPaper.classList.contains('show')){
+    // 信纸已打开：点击信纸外区域关闭
+    if(!letterPaper.contains(e.target)){
+      letterPaper.classList.remove('show');
+      setTimeout(()=>envelope.classList.remove('open'),600);
+    }
+  }else{
+    // 信纸未打开：点击信封区域内任意位置打开
+    const r=envelopeWrapper.getBoundingClientRect();
+    if(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom){
+      envelope.classList.add('open');
+      setTimeout(()=>letterPaper.classList.add('show'),400);
+    }
+  }
+});
 closeLetter.addEventListener('click',(e)=>{e.stopPropagation();letterPaper.classList.remove('show');setTimeout(()=>envelope.classList.remove('open'),600);});
 letterMode.addEventListener('click',(e)=>{if(e.target===letterMode&&letterPaper.classList.contains('show')){letterPaper.classList.remove('show');setTimeout(()=>envelope.classList.remove('open'),600);}});
 document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&letterMode.classList.contains('show')){if(letterPaper.classList.contains('show')){letterPaper.classList.remove('show');setTimeout(()=>envelope.classList.remove('open'),600);}else{letterMode.classList.remove('show');}}});
