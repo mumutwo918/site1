@@ -27,6 +27,9 @@
   .hug-image.show{opacity:1;transform:translateX(-50%) scale(1);animation:hugBreathe 3s ease-in-out infinite 0.5s;}
   .kiss-image{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);height:52vh;max-height:460px;width:auto;opacity:0;pointer-events:none;z-index:9;filter:drop-shadow(0 8px 25px rgba(0,0,0,.4));transition:opacity 0.3s ease;}
   .kiss-image.show{opacity:1;}
+  .kiss-image.kiss-forehead{transform:translateX(-50%) translateY(-25px);}
+  .kiss-image.kiss-cheek{transform:translateX(-50%) translateX(-8px);}
+  .kiss-image.kiss-mouth{transform:translateX(-50%);}
   .character{position:relative;transition:transform 0.6s cubic-bezier(.34,1.56,.64,1);display:flex;align-items:flex-end;}
   .character img{display:block;height:52vh;max-height:460px;width:auto;filter:drop-shadow(0 8px 25px rgba(0,0,0,.4));animation:idleFloat 4s ease-in-out infinite;}
   .character .img-side{display:none;}
@@ -212,6 +215,8 @@ document.getElementById('dotFemaleMouth').style.left=(fLeft+fr.width*0.12)+'px';
 dots.forEach(dot=>{dot.addEventListener('click',()=>{const target=dot.dataset.target;const part=dot.dataset.part;kissHint.classList.remove('show');dots.forEach(d=>d.classList.remove('show'));
 const imgMap={male:{forehead:'kiss_f_forehead.png',cheek:'kiss_f_cheek.png',mouth:'kiss_f_mouth.png'},female:{forehead:'kiss_m_forehead.png',cheek:'kiss_m_cheek.png',mouth:'kiss_m_mouth.png'}};
 kissImage.src=imgMap[target][part];
+kissImage.classList.remove('kiss-forehead','kiss-cheek','kiss-mouth');
+kissImage.classList.add('kiss-'+part);
 maleChar.classList.add('fade-out');femaleChar.classList.add('fade-out');
 setTimeout(function(){kissImage.classList.add('show');},450);
 kissTimer=setTimeout(function(){kissImage.classList.remove('show');maleChar.classList.remove('fade-out');femaleChar.classList.remove('fade-out');setTimeout(function(){positionDots();dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');},300);},1800);});});
