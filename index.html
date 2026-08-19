@@ -213,7 +213,7 @@ dots.forEach(dot=>{dot.addEventListener('click',()=>{const target=dot.dataset.ta
 const imgMap={male:{forehead:'kiss_f_forehead.png',cheek:'kiss_f_cheek.png',mouth:'kiss_f_mouth.png'},female:{forehead:'kiss_m_forehead.png',cheek:'kiss_m_cheek.png',mouth:'kiss_m_mouth.png'}};
 kissImage.src=imgMap[target][part];
 maleChar.classList.add('fade-out');femaleChar.classList.add('fade-out');
-setTimeout(function(){kissImage.classList.add('show');},200);
+setTimeout(function(){kissImage.classList.add('show');},450);
 kissTimer=setTimeout(function(){kissImage.classList.remove('show');maleChar.classList.remove('fade-out');femaleChar.classList.remove('fade-out');setTimeout(function(){positionDots();dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');},300);},1800);});});
 const envelopeWrapper=document.getElementById('envelopeWrapper');
 const envelope=document.getElementById('envelope');
