@@ -59,7 +59,7 @@
   .change-btn{position:absolute;bottom:12%;right:10%;padding:8px 20px;border:2px solid var(--pink);border-radius:20px;background:rgba(255,255,255,.9);color:var(--pink-deep);font-family:'ZCOOL KuaiLe',sans-serif;font-size:.95em;cursor:pointer;z-index:25;display:none;transition:all .3s;}
   .change-btn.show{display:block;}
   .change-btn:hover{background:var(--pink);color:#fff;}
-  .kiss-dot{position:absolute;width:40px;height:40px;background:rgba(255,255,255,.95);border-radius:50%;border:2px solid var(--pink);cursor:pointer;box-shadow:0 0 12px rgba(255,255,255,.9);animation:dotPulse 1.5s infinite;z-index:100;display:none;}
+  .kiss-dot{position:absolute;width:24px;height:24px;background:rgba(255,255,255,.95);border-radius:50%;border:2px solid var(--pink);cursor:pointer;box-shadow:0 0 12px rgba(255,255,255,.9);animation:dotPulse 1.5s infinite;z-index:100;display:none;}
   .kiss-dot.show{display:block;}
   @keyframes dotPulse{0%,100%{transform:scale(1);box-shadow:0 0 12px rgba(255,255,255,.9)}50%{transform:scale(1.4);box-shadow:0 0 24px rgba(255,255,255,1)}}
   .kiss-hint{position:absolute;top:25%;left:50%;transform:translateX(-50%);color:#fff;font-size:1.2em;z-index:25;text-shadow:0 0 10px rgba(255,143,171,.8);display:none;animation:hintBlink 2s infinite;}
@@ -67,6 +67,8 @@
   @keyframes hintBlink{0%,100%{opacity:1}50%{opacity:.5}}
   .letter-mode{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#ffe0ec 0%,#ffc2d1 50%,#ffb3c6 100%);z-index:100;display:none;align-items:center;justify-content:center;flex-direction:column;}
   .letter-mode.show{display:flex;}
+  .back-home-btn{position:absolute;top:20px;left:20px;padding:10px 20px;background:rgba(255,255,255,.9);color:#e85a7f;border:none;border-radius:25px;font-size:14px;font-weight:600;cursor:pointer;box-shadow:0 4px 15px rgba(232,90,127,.3);z-index:10;transition:all .3s;}
+  .back-home-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(232,90,127,.4);}
   .envelope-wrapper{position:relative;width:320px;height:220px;perspective:1000px;cursor:pointer;}
   .envelope{position:relative;width:100%;height:100%;background:linear-gradient(135deg,#fff5f8,#ffe4ec);border-radius:8px;box-shadow:0 20px 60px rgba(232,90,127,.3);overflow:hidden;}
   .envelope-flap{position:absolute;top:0;left:0;width:100%;height:50%;background:linear-gradient(135deg,#ffd6e0,#ffc2d1);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s ease;z-index:3;}
@@ -140,6 +142,7 @@
 </div>
 
 <div class="letter-mode" id="letterMode">
+  <button class="back-home-btn" id="backHomeBtn">← 返回主界面</button>
   <div class="envelope-wrapper" id="envelopeWrapper">
     <div class="envelope" id="envelope">
       <div class="envelope-flap"></div><div class="envelope-body"></div>
@@ -222,6 +225,7 @@ const closeLetter=document.getElementById('closeLetter');
 const letterMode=document.getElementById('letterMode');
 letterMode.addEventListener('click',(e)=>{if(letterPaper.classList.contains('show')){if(!letterPaper.contains(e.target)){letterPaper.classList.remove('show');setTimeout(()=>envelope.classList.remove('open'),600);}}else{const r=envelopeWrapper.getBoundingClientRect();if(e.clientX>=r.left&&e.clientX<=r.right&&e.clientY>=r.top&&e.clientY<=r.bottom){envelope.classList.add('open');setTimeout(()=>letterPaper.classList.add('show'),400);}}});
 closeLetter.addEventListener('click',(e)=>{e.stopPropagation();letterPaper.classList.remove('show');setTimeout(()=>envelope.classList.remove('open'),600);});
+document.getElementById('backHomeBtn').addEventListener('click',()=>{document.getElementById('letterMode').classList.remove('show');resetAll();document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));});
 document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&letterMode.classList.contains('show')){if(letterPaper.classList.contains('show')){letterPaper.classList.remove('show');setTimeout(()=>envelope.classList.remove('open'),600);}else{letterMode.classList.remove('show');}}});
 window.addEventListener('resize',()=>{if(document.querySelector('.kiss-dot.show'))positionDots();if(maleBubble.classList.contains('show'))positionBubbles();});
 </script>
