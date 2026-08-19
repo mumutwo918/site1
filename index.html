@@ -205,12 +205,8 @@ document.getElementById('dotMaleMouth').style.left=(mLeft+mr.width*0.86)+'px';do
 // 女生侧面朝左，嘴唇在面部左侧
 document.getElementById('dotFemaleMouth').style.left=(fLeft+fr.width*0.14)+'px';document.getElementById('dotFemaleMouth').style.top=(fTop+fr.height*0.26)+'px';}
 dots.forEach(dot=>{dot.addEventListener('click',()=>{const target=dot.dataset.target;const part=dot.dataset.part;kissHint.classList.remove('show');dots.forEach(d=>d.classList.remove('show'));
-const imgMap={male:'kiss_f_mouth.png',female:'kiss_m_mouth.png'};
-const ki=document.getElementById('kissImage');
-ki.src=imgMap[target];
 maleChar.style.opacity='0';femaleChar.style.opacity='0';
-setTimeout(function(){ki.classList.add('show');},400);
-kissTimer=setTimeout(function(){ki.classList.remove('show');maleChar.style.opacity='1';femaleChar.style.opacity='1';setTimeout(function(){positionDots();dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');},300);},1800);});});
+kissTimer=setTimeout(function(){maleChar.style.opacity='1';femaleChar.style.opacity='1';setTimeout(function(){positionDots();dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');},300);},1800);});});
 const envelopeWrapper=document.getElementById('envelopeWrapper');
 const envelope=document.getElementById('envelope');
 const letterPaper=document.getElementById('letterPaper');
