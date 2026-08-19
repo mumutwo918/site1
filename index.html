@@ -198,8 +198,8 @@ else if(mode==='kiss'){maleChar.classList.add('side-view');femaleChar.classList.
 else if(mode==='chat'){femaleChar.classList.add('chat-female');changeBtn.classList.add('show');currentWordIndex=Math.floor(Math.random()*loveWords.length);showChat();startHearts();}});});
 changeBtn.addEventListener('click',()=>{maleBubble.classList.remove('show');femaleBubble.classList.remove('show');currentWordIndex=(currentWordIndex+1)%loveWords.length;setTimeout(showChat,300);});
 function positionDots(){
-document.getElementById('dotMaleMouth').style.left='37%';document.getElementById('dotMaleMouth').style.top='23%';
-document.getElementById('dotFemaleMouth').style.left='41%';document.getElementById('dotFemaleMouth').style.top='28%';}
+document.getElementById('dotMaleMouth').style.left='40%';document.getElementById('dotMaleMouth').style.top='20%';
+document.getElementById('dotFemaleMouth').style.left='48%';document.getElementById('dotFemaleMouth').style.top='25%';}
 function doKiss(target){
 const mc=document.getElementById('maleChar');
 const fc=document.getElementById('femaleChar');
