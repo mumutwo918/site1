@@ -207,8 +207,6 @@ document.getElementById('dotFemaleMouth').style.left=(fLeft+fr.width*0.14)+'px';
 dots.forEach(dot=>{dot.addEventListener('click',()=>{const target=dot.dataset.target;const part=dot.dataset.part;kissHint.classList.remove('show');dots.forEach(d=>d.classList.remove('show'));
 const imgMap={male:'kiss_f_mouth.png',female:'kiss_m_mouth.png'};
 kissImage.src=imgMap[target];
-kissImage.classList.remove('kiss-forehead','kiss-cheek','kiss-mouth');
-kissImage.classList.add('kiss-'+part);
 maleChar.classList.add('fade-out');femaleChar.classList.add('fade-out');
 setTimeout(function(){kissImage.classList.add('show');},450);
 kissTimer=setTimeout(function(){kissImage.classList.remove('show');maleChar.classList.remove('fade-out');femaleChar.classList.remove('fade-out');setTimeout(function(){positionDots();dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');},300);},1800);});});
