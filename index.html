@@ -6,143 +6,160 @@
 <title>七夕快乐 · 我最爱的你</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+KuaiLe&display=swap');
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin:0; padding:0; box-sizing:border-box; }
   :root {
-    --pink: #ff8fab; --pink-light: #ffc2d1; --pink-deep: #e85a7f;
-    --night-top: #0a0a2e; --night-mid: #1a1a4e; --night-bottom: #2d1b69;
-    --gold: #ffd700;
+    --pink:#ff8fab; --pink-light:#ffc2d1; --pink-deep:#e85a7f;
+    --night-top:#0a0a2e; --night-mid:#1a1a4e; --night-bottom:#2d1b69;
+    --gold:#ffd700;
   }
-  html, body {
-    width: 100%; height: 100%; overflow: hidden;
-    font-family: 'ZCOOL KuaiLe', 'Microsoft YaHei', sans-serif;
-    background: linear-gradient(180deg, var(--night-top) 0%, var(--night-mid) 50%, var(--night-bottom) 100%);
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='%23333' stroke='%23fff' stroke-width='1'%3E%3Cpath d='M24 20 L8 8 L14 22 L6 24 L16 28 L10 36 L24 30 L38 36 L32 28 L42 24 L34 22 L40 8 Z'/%3E%3Ccircle cx='24' cy='22' r='3' fill='%23ffd700'/%3E%3Cpath d='M24 25 L22 30 L26 30 Z' fill='%23ff6b6b'/%3E%3C/g%3E%3C/svg%3E") 24 24, auto;
+  html,body {
+    width:100%; height:100%; overflow:hidden;
+    font-family:'ZCOOL KuaiLe','Microsoft YaHei',sans-serif;
+    background:linear-gradient(180deg,var(--night-top) 0%,var(--night-mid) 50%,var(--night-bottom) 100%);
+    cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='%23333' stroke='%23fff' stroke-width='1'%3E%3Cpath d='M24 20 L8 8 L14 22 L6 24 L16 28 L10 36 L24 30 L38 36 L32 28 L42 24 L34 22 L40 8 Z'/%3E%3Ccircle cx='24' cy='22' r='3' fill='%23ffd700'/%3E%3Cpath d='M24 25 L22 30 L26 30 Z' fill='%23ff6b6b'/%3E%3C/g%3E%3C/svg%3E") 24 24,auto;
   }
-  .stars { position: fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:1; }
-  .star { position:absolute; background:#fff; border-radius:50%; animation:twinkle 3s infinite ease-in-out; }
-  @keyframes twinkle { 0%,100%{opacity:.3;transform:scale(1)} 50%{opacity:1;transform:scale(1.3)} }
-  #fireworks { position:fixed; top:0; left:0; width:100%; height:100%; z-index:2; pointer-events:none; }
-  .moon {
-    position:fixed; top:5%; right:7%; width:75px; height:75px;
-    background: radial-gradient(circle at 35% 35%, #fffde7, #fff9c4 60%, #ffeb3b);
-    border-radius:50%; box-shadow:0 0 40px rgba(255,235,59,.5),0 0 80px rgba(255,235,59,.3);
-    z-index:3; animation:moonGlow 4s infinite ease-in-out;
+  .stars{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+  .star{position:absolute;background:#fff;border-radius:50%;animation:twinkle 3s infinite ease-in-out;}
+  @keyframes twinkle{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.3)}}
+  #fireworks{position:fixed;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;}
+  .moon{
+    position:fixed;top:5%;right:8%;width:80px;height:80px;
+    background:radial-gradient(circle at 35% 35%,#fffde7,#fff9c4 60%,#ffeb3b);
+    border-radius:50%;box-shadow:0 0 40px rgba(255,235,59,.5),0 0 80px rgba(255,235,59,.3);
+    z-index:3;animation:moonGlow 4s infinite ease-in-out;
   }
-  @keyframes moonGlow { 0%,100%{box-shadow:0 0 40px rgba(255,235,59,.5),0 0 80px rgba(255,235,59,.3)} 50%{box-shadow:0 0 60px rgba(255,235,59,.7),0 0 120px rgba(255,235,59,.4)} }
-  .container { position:relative; z-index:10; width:100%; height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-  .title { position:absolute; top:3%; left:50%; transform:translateX(-50%); text-align:center; z-index:20; }
-  .title h1 { font-family:'Ma Shan Zheng',cursive; font-size:2.6em; color:#fff; text-shadow:0 0 20px rgba(255,143,171,.8),0 0 40px rgba(255,143,171,.4); letter-spacing:4px; }
-  .title p { color:var(--pink-light); font-size:.95em; margin-top:6px; text-shadow:0 0 10px rgba(0,0,0,.5); }
+  @keyframes moonGlow{0%,100%{box-shadow:0 0 40px rgba(255,235,59,.5),0 0 80px rgba(255,235,59,.3)}50%{box-shadow:0 0 60px rgba(255,235,59,.7),0 0 120px rgba(255,235,59,.4)}}
 
-  .stage {
-    position:relative; width:65vw; max-width:750px; height:58vh; max-height:520px;
-    display:flex; align-items:flex-end; justify-content:center; gap:0; z-index:10;
-  }
-  .character {
-    position:relative; height:100%; display:flex; align-items:flex-end;
-    transition: transform 0.6s cubic-bezier(.34,1.56,.64,1);
-  }
-  .character svg { height:100%; width:auto; overflow:visible; }
+  .container{position:relative;z-index:10;width:100%;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;}
+  .title{position:absolute;top:4%;left:50%;transform:translateX(-50%);text-align:center;z-index:20;}
+  .title h1{font-family:'Ma Shan Zheng',cursive;font-size:2.6em;color:#fff;text-shadow:0 0 20px rgba(255,143,171,.8),0 0 40px rgba(255,143,171,.4);letter-spacing:4px;}
+  .title p{color:var(--pink-light);font-size:.95em;margin-top:6px;text-shadow:0 0 10px rgba(0,0,0,.5);}
 
-  /* 手臂旋转 - 肩膀为旋转中心 */
-  .arm-left, .arm-right { transition: transform 0.6s cubic-bezier(.34,1.56,.64,1); transform-origin: center top; transform-box: fill-box; }
+  /* 场景舞台 */
+  .scene{
+    position:relative;width:100%;height:70vh;
+    display:flex;align-items:flex-end;justify-content:center;
+    z-index:10;
+  }
+
+  /* 屋顶 */
+  .roof-wrapper{
+    position:absolute;bottom:0;left:0;width:100%;height:200px;z-index:5;
+    display:flex;justify-content:center;
+  }
+  .roof-svg{width:100%;max-width:900px;height:100%;overflow:visible;}
+
+  /* 人物容器 */
+  .couple{
+    position:relative;z-index:8;display:flex;align-items:flex-end;
+    gap:0;margin-bottom:80px;
+  }
+  .character{
+    position:relative;transition:transform 0.6s cubic-bezier(.34,1.56,.64,1);
+  }
+  .character svg{display:block;overflow:visible;}
+  .char-male{width:180px;}
+  .char-female{width:180px;}
+
+  /* 手臂 */
+  .arm-left,.arm-right{transition:transform 0.6s cubic-bezier(.34,1.56,.64,1);transform-origin:center top;transform-box:fill-box;}
 
   /* 按钮 */
-  .buttons {
-    position:absolute; bottom:4%; left:50%; transform:translateX(-50%);
-    display:flex; gap:14px; z-index:20; flex-wrap:wrap; justify-content:center;
+  .buttons{
+    position:absolute;bottom:3%;left:50%;transform:translateX(-50%);
+    display:flex;gap:14px;z-index:20;flex-wrap:wrap;justify-content:center;
   }
-  .mode-btn {
-    padding:11px 22px; border:none; border-radius:30px;
-    font-family:'ZCOOL KuaiLe',sans-serif; font-size:1.05em; white-space:nowrap;
-    background:linear-gradient(135deg,var(--pink),var(--pink-deep)); color:#fff; cursor:pointer;
+  .mode-btn{
+    padding:11px 22px;border:none;border-radius:30px;
+    font-family:'ZCOOL KuaiLe',sans-serif;font-size:1.05em;white-space:nowrap;
+    background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;cursor:pointer;
     box-shadow:0 4px 15px rgba(232,90,127,.4),inset 0 1px 0 rgba(255,255,255,.3);
     transition:all .3s ease;
   }
-  .mode-btn:hover { transform:translateY(-3px) scale(1.05); box-shadow:0 8px 25px rgba(232,90,127,.6); }
-  .mode-btn:active { transform:translateY(0) scale(.98); }
-  .mode-btn.active { background:linear-gradient(135deg,var(--gold),#ffaa00); box-shadow:0 4px 20px rgba(255,215,0,.6); }
+  .mode-btn:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 8px 25px rgba(232,90,127,.6);}
+  .mode-btn:active{transform:translateY(0) scale(.98);}
+  .mode-btn.active{background:linear-gradient(135deg,var(--gold),#ffaa00);box-shadow:0 4px 20px rgba(255,215,0,.6);}
 
   /* 爱心 */
-  .hearts-container { position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:15; overflow:hidden; }
-  .floating-heart { position:absolute; font-size:24px; animation:floatUp 4s ease-out forwards; opacity:0; }
-  @keyframes floatUp { 0%{opacity:0;transform:translateY(0) scale(.5) rotate(0)} 20%{opacity:1;transform:translateY(-30px) scale(1) rotate(10deg)} 100%{opacity:0;transform:translateY(-300px) scale(.3) rotate(-10deg)} }
+  .hearts-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:15;overflow:hidden;}
+  .floating-heart{position:absolute;font-size:24px;animation:floatUp 4s ease-out forwards;opacity:0;}
+  @keyframes floatUp{0%{opacity:0;transform:translateY(0) scale(.5) rotate(0)}20%{opacity:1;transform:translateY(-30px) scale(1) rotate(10deg)}100%{opacity:0;transform:translateY(-300px) scale(.3) rotate(-10deg)}}
 
   /* 对话框 */
-  .speech-bubble {
-    position:absolute; background:#fff; border-radius:20px; padding:10px 18px;
-    font-size:1em; color:#333; box-shadow:0 4px 15px rgba(0,0,0,.2);
-    opacity:0; transform:scale(0); transition:all .3s ease; white-space:nowrap; z-index:25;
+  .speech-bubble{
+    position:absolute;background:#fff;border-radius:20px;padding:10px 18px;
+    font-size:1em;color:#333;box-shadow:0 4px 15px rgba(0,0,0,.2);
+    opacity:0;transform:scale(0);transition:all .3s ease;white-space:nowrap;z-index:25;
   }
-  .speech-bubble.show { opacity:1; transform:scale(1); }
-  .speech-bubble::after { content:''; position:absolute; bottom:-10px; border:10px solid transparent; border-top-color:#fff; }
-  .bubble-male { top:-45px; left:50%; transform:translateX(-50%) scale(0); }
-  .bubble-male.show { transform:translateX(-50%) scale(1); }
-  .bubble-male::after { left:30%; }
-  .bubble-female { top:-45px; left:50%; transform:translateX(-50%) scale(0); }
-  .bubble-female.show { transform:translateX(-50%) scale(1); }
-  .bubble-female::after { right:30%; left:auto; }
+  .speech-bubble.show{opacity:1;transform:scale(1);}
+  .speech-bubble::after{content:'';position:absolute;bottom:-10px;border:10px solid transparent;border-top-color:#fff;}
+  .bubble-male{top:-50px;left:30%;transform:translateX(-50%) scale(0);}
+  .bubble-male.show{transform:translateX(-50%) scale(1);}
+  .bubble-male::after{left:40%;}
+  .bubble-female{top:-50px;left:70%;transform:translateX(-50%) scale(0);}
+  .bubble-female.show{transform:translateX(-50%) scale(1);}
+  .bubble-female::after{right:40%;left:auto;}
 
-  .change-btn {
-    position:absolute; bottom:16%; right:12%; padding:8px 20px; border:2px solid var(--pink);
-    border-radius:20px; background:rgba(255,255,255,.9); color:var(--pink-deep);
-    font-family:'ZCOOL KuaiLe',sans-serif; font-size:.95em; cursor:pointer; z-index:25;
-    display:none; transition:all .3s;
+  .change-btn{
+    position:absolute;bottom:12%;right:10%;padding:8px 20px;border:2px solid var(--pink);
+    border-radius:20px;background:rgba(255,255,255,.9);color:var(--pink-deep);
+    font-family:'ZCOOL KuaiLe',sans-serif;font-size:.95em;cursor:pointer;z-index:25;
+    display:none;transition:all .3s;
   }
-  .change-btn.show { display:block; }
-  .change-btn:hover { background:var(--pink); color:#fff; }
+  .change-btn.show{display:block;}
+  .change-btn:hover{background:var(--pink);color:#fff;}
 
   /* Kiss点 */
-  .kiss-dot {
-    position:absolute; width:16px; height:16px; background:rgba(255,255,255,.95);
-    border-radius:50%; border:2px solid var(--pink); cursor:pointer;
-    box-shadow:0 0 12px rgba(255,255,255,.9); animation:dotPulse 1.5s infinite; z-index:30; display:none;
+  .kiss-dot{
+    position:absolute;width:16px;height:16px;background:rgba(255,255,255,.95);
+    border-radius:50%;border:2px solid var(--pink);cursor:pointer;
+    box-shadow:0 0 12px rgba(255,255,255,.9);animation:dotPulse 1.5s infinite;z-index:30;display:none;
   }
-  .kiss-dot.show { display:block; }
-  @keyframes dotPulse { 0%,100%{transform:scale(1);box-shadow:0 0 12px rgba(255,255,255,.9)} 50%{transform:scale(1.4);box-shadow:0 0 24px rgba(255,255,255,1)} }
-  .kiss-hint {
-    position:absolute; top:22%; left:50%; transform:translateX(-50%); color:#fff; font-size:1.2em;
-    z-index:25; text-shadow:0 0 10px rgba(255,143,171,.8); display:none; animation:hintBlink 2s infinite;
+  .kiss-dot.show{display:block;}
+  @keyframes dotPulse{0%,100%{transform:scale(1);box-shadow:0 0 12px rgba(255,255,255,.9)}50%{transform:scale(1.4);box-shadow:0 0 24px rgba(255,255,255,1)}}
+  .kiss-hint{
+    position:absolute;top:30%;left:50%;transform:translateX(-50%);color:#fff;font-size:1.2em;
+    z-index:25;text-shadow:0 0 10px rgba(255,143,171,.8);display:none;animation:hintBlink 2s infinite;
   }
-  .kiss-hint.show { display:block; }
-  @keyframes hintBlink { 0%,100%{opacity:1} 50%{opacity:.5} }
+  .kiss-hint.show{display:block;}
+  @keyframes hintBlink{0%,100%{opacity:1}50%{opacity:.5}}
 
   /* 情书 */
-  .letter-mode {
-    position:fixed; top:0; left:0; width:100%; height:100%;
+  .letter-mode{
+    position:fixed;top:0;left:0;width:100%;height:100%;
     background:linear-gradient(135deg,#ffe0ec 0%,#ffc2d1 50%,#ffb3c6 100%);
-    z-index:100; display:none; align-items:center; justify-content:center; flex-direction:column;
+    z-index:100;display:none;align-items:center;justify-content:center;flex-direction:column;
   }
-  .letter-mode.show { display:flex; }
-  .envelope-wrapper { position:relative; width:320px; height:220px; perspective:1000px; cursor:pointer; }
-  .envelope { position:relative; width:100%; height:100%; background:linear-gradient(135deg,#fff5f8,#ffe4ec); border-radius:8px; box-shadow:0 20px 60px rgba(232,90,127,.3); overflow:hidden; }
-  .envelope-flap { position:absolute; top:0; left:0; width:100%; height:50%; background:linear-gradient(135deg,#ffd6e0,#ffc2d1); clip-path:polygon(0 0,100% 0,50% 100%); transform-origin:top; transition:transform .6s ease; z-index:3; }
-  .envelope.open .envelope-flap { transform:rotateX(180deg); z-index:1; }
-  .envelope-body { position:absolute; bottom:0; left:0; width:100%; height:70%; background:linear-gradient(135deg,#fff0f5,#ffe4ec); z-index:2; }
-  .heart-seal { position:absolute; top:38%; left:50%; transform:translate(-50%,-50%); width:70px; height:70px; z-index:5; display:flex; align-items:center; justify-content:center; transition:opacity .3s; }
-  .envelope.open .heart-seal { opacity:0; pointer-events:none; }
-  .heart-seal svg { width:100%; height:100%; filter:drop-shadow(0 4px 10px rgba(232,90,127,.4)); animation:heartBeat 1.5s infinite; }
-  @keyframes heartBeat { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
-  .heart-seal span { position:absolute; color:#fff; font-size:.7em; font-family:'ZCOOL KuaiLe',sans-serif; text-shadow:0 1px 3px rgba(0,0,0,.3); white-space:nowrap; }
-  .letter-paper {
-    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%) scale(.3);
-    width:90%; max-width:500px; max-height:80vh; background:#fffdf7; border-radius:6px;
-    padding:40px 35px; box-shadow:0 20px 60px rgba(0,0,0,.15); opacity:0; z-index:10;
-    overflow-y:auto; transition:all 1s ease; font-family:'Ma Shan Zheng','KaiTi','楷体',cursive;
-    line-height:2; color:#5a3a3a; font-size:1.05em;
+  .letter-mode.show{display:flex;}
+  .envelope-wrapper{position:relative;width:320px;height:220px;perspective:1000px;cursor:pointer;}
+  .envelope{position:relative;width:100%;height:100%;background:linear-gradient(135deg,#fff5f8,#ffe4ec);border-radius:8px;box-shadow:0 20px 60px rgba(232,90,127,.3);overflow:hidden;}
+  .envelope-flap{position:absolute;top:0;left:0;width:100%;height:50%;background:linear-gradient(135deg,#ffd6e0,#ffc2d1);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .6s ease;z-index:3;}
+  .envelope.open .envelope-flap{transform:rotateX(180deg);z-index:1;}
+  .envelope-body{position:absolute;bottom:0;left:0;width:100%;height:70%;background:linear-gradient(135deg,#fff0f5,#ffe4ec);z-index:2;}
+  .heart-seal{position:absolute;top:38%;left:50%;transform:translate(-50%,-50%);width:70px;height:70px;z-index:5;display:flex;align-items:center;justify-content:center;transition:opacity .3s;}
+  .envelope.open .heart-seal{opacity:0;pointer-events:none;}
+  .heart-seal svg{width:100%;height:100%;filter:drop-shadow(0 4px 10px rgba(232,90,127,.4));animation:heartBeat 1.5s infinite;}
+  @keyframes heartBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+  .heart-seal span{position:absolute;color:#fff;font-size:.7em;font-family:'ZCOOL KuaiLe',sans-serif;text-shadow:0 1px 3px rgba(0,0,0,.3);white-space:nowrap;}
+  .letter-paper{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(.3);
+    width:90%;max-width:500px;max-height:80vh;background:#fffdf7;border-radius:6px;
+    padding:40px 35px;box-shadow:0 20px 60px rgba(0,0,0,.15);opacity:0;z-index:10;
+    overflow-y:auto;transition:all 1s ease;font-family:'Ma Shan Zheng','KaiTi','楷体',cursive;
+    line-height:2;color:#5a3a3a;font-size:1.05em;
   }
-  .letter-paper.show { opacity:1; transform:translate(-50%,-50%) scale(1); }
-  .letter-paper .greeting { font-size:1.3em; margin-bottom:15px; color:var(--pink-deep); }
-  .letter-paper .body-text { text-indent:2em; margin-bottom:12px; }
-  .letter-paper .signature { text-align:right; margin-top:25px; font-size:1.1em; }
-  .letter-paper .close-btn { display:block; margin:20px auto 0; padding:8px 24px; border:2px solid var(--pink); border-radius:20px; background:transparent; color:var(--pink-deep); font-family:'ZCOOL KuaiLe',sans-serif; cursor:pointer; font-size:.9em; transition:all .3s; }
-  .letter-paper .close-btn:hover { background:var(--pink); color:#fff; }
+  .letter-paper.show{opacity:1;transform:translate(-50%,-50%) scale(1);}
+  .letter-paper .greeting{font-size:1.3em;margin-bottom:15px;color:var(--pink-deep);}
+  .letter-paper .body-text{text-indent:2em;margin-bottom:12px;}
+  .letter-paper .signature{text-align:right;margin-top:25px;font-size:1.1em;}
+  .letter-paper .close-btn{display:block;margin:20px auto 0;padding:8px 24px;border:2px solid var(--pink);border-radius:20px;background:transparent;color:var(--pink-deep);font-family:'ZCOOL KuaiLe',sans-serif;cursor:pointer;font-size:.9em;transition:all .3s;}
+  .letter-paper .close-btn:hover{background:var(--pink);color:#fff;}
 
-  @media (max-width:768px) {
-    .title h1 { font-size:1.8em; }
-    .stage { width:90vw; height:45vh; }
-    .mode-btn { padding:10px 16px; font-size:.9em; }
-    .buttons { gap:8px; }
+  @media (max-width:768px){
+    .title h1{font-size:1.8em;}
+    .char-male,.char-female{width:130px;}
+    .mode-btn{padding:10px 16px;font-size:.9em;}
+    .buttons{gap:8px;}
   }
 </style>
 </head>
@@ -158,298 +175,233 @@
     <p>遇见你，是我这辈子最美的意外</p>
   </div>
 
-  <div class="stage" id="stage">
-    <!-- 男生 -->
-    <div class="character" id="maleChar">
-      <div class="speech-bubble bubble-male" id="maleBubble"></div>
-      <svg viewBox="0 0 220 360" xmlns="http://www.w3.org/2000/svg">
+  <div class="scene" id="scene">
+    <!-- 屋顶 -->
+    <div class="roof-wrapper">
+      <svg class="roof-svg" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
         <defs>
-          <radialGradient id="maleFace" cx="40%" cy="35%" r="65%">
-            <stop offset="0%" stop-color="#ffe8d6"/>
-            <stop offset="60%" stop-color="#ffd4b8"/>
-            <stop offset="100%" stop-color="#f5b894"/>
-          </radialGradient>
-          <radialGradient id="maleHair" cx="50%" cy="30%" r="70%">
-            <stop offset="0%" stop-color="#3d3d3d"/>
-            <stop offset="100%" stop-color="#1a1a1a"/>
-          </radialGradient>
-          <linearGradient id="maleShirt" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#e8384f"/>
-            <stop offset="100%" stop-color="#c41e3a"/>
+          <linearGradient id="roofGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#4a3520"/>
+            <stop offset="100%" stop-color="#2d1f12"/>
           </linearGradient>
-          <linearGradient id="maleShorts" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#2d2d2d"/>
-            <stop offset="100%" stop-color="#1a1a1a"/>
+          <linearGradient id="tileGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#6b4c30"/>
+            <stop offset="100%" stop-color="#3d2a18"/>
           </linearGradient>
-          <radialGradient id="maleCheek" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#ff9999" stop-opacity="0.6"/>
-            <stop offset="100%" stop-color="#ff9999" stop-opacity="0"/>
-          </radialGradient>
-          <linearGradient id="shoeRed" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#c41e3a"/>
-            <stop offset="100%" stop-color="#8b0000"/>
-          </linearGradient>
-          <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
-          </filter>
         </defs>
-
-        <!-- 影子 -->
-        <ellipse cx="110" cy="350" rx="55" ry="8" fill="#000" opacity="0.2"/>
-
-        <!-- 左腿 -->
-        <rect x="82" y="268" width="24" height="55" rx="10" fill="url(#maleFace)"/>
-        <!-- 右腿 -->
-        <rect x="114" y="268" width="24" height="55" rx="10" fill="url(#maleFace)"/>
-        <!-- 白袜子 -->
-        <rect x="80" y="310" width="28" height="16" rx="6" fill="#f5f5f5"/>
-        <rect x="112" y="310" width="28" height="16" rx="6" fill="#f5f5f5"/>
-        <!-- 左鞋 -->
-        <g filter="url(#softShadow)">
-          <ellipse cx="94" cy="338" rx="20" ry="12" fill="url(#shoeRed)"/>
-          <ellipse cx="94" cy="332" rx="18" ry="6" fill="#fff" opacity="0.3"/>
-          <rect x="78" y="332" width="32" height="8" rx="4" fill="#fff"/>
+        <!-- 屋顶主体 -->
+        <path d="M0 200 L0 120 Q450 40 900 120 L900 200 Z" fill="url(#roofGrad)"/>
+        <!-- 瓦片纹理 -->
+        <g opacity="0.6">
+          <!-- 第一排瓦片 -->
+          <path d="M0 130 Q30 118 60 130 Q90 118 120 130 Q150 118 180 130 Q210 118 240 130 Q270 118 300 130 Q330 118 360 130 Q390 118 420 130 Q450 118 480 130 Q510 118 540 130 Q570 118 600 130 Q630 118 660 130 Q690 118 720 130 Q750 118 780 130 Q810 118 840 130 Q870 118 900 130" fill="none" stroke="url(#tileGrad)" stroke-width="8"/>
+          <!-- 第二排 -->
+          <path d="M0 148 Q30 136 60 148 Q90 136 120 148 Q150 136 180 148 Q210 136 240 148 Q270 136 300 148 Q330 136 360 148 Q390 136 420 148 Q450 136 480 148 Q510 136 540 148 Q570 136 600 148 Q630 136 660 148 Q690 136 720 148 Q750 136 780 148 Q810 136 840 148 Q870 136 900 148" fill="none" stroke="url(#tileGrad)" stroke-width="8"/>
+          <!-- 第三排 -->
+          <path d="M0 166 Q30 154 60 166 Q90 154 120 166 Q150 154 180 166 Q210 154 240 166 Q270 154 300 166 Q330 154 360 166 Q390 154 420 166 Q450 154 480 166 Q510 154 540 166 Q570 154 600 166 Q630 154 660 166 Q690 154 720 166 Q750 154 780 166 Q810 154 840 166 Q870 154 900 166" fill="none" stroke="url(#tileGrad)" stroke-width="8"/>
+          <!-- 第四排 -->
+          <path d="M0 184 Q30 172 60 184 Q90 172 120 184 Q150 172 180 184 Q210 172 240 184 Q270 172 300 184 Q330 172 360 184 Q390 172 420 184 Q450 172 480 184 Q510 172 540 184 Q570 172 600 184 Q630 172 660 184 Q690 172 720 184 Q750 172 780 184 Q810 172 840 184 Q870 172 900 184" fill="none" stroke="url(#tileGrad)" stroke-width="8"/>
         </g>
-        <!-- 右鞋 -->
-        <g filter="url(#softShadow)">
-          <ellipse cx="126" cy="338" rx="20" ry="12" fill="url(#shoeRed)"/>
-          <ellipse cx="126" cy="332" rx="18" ry="6" fill="#fff" opacity="0.3"/>
-          <rect x="110" y="332" width="32" height="8" rx="4" fill="#fff"/>
-        </g>
-
-        <!-- 黑色短裤 -->
-        <path d="M72 230 Q70 225 78 222 L142 222 Q150 225 148 230 L152 275 Q152 282 144 282 L115 282 L112 270 L108 270 L105 282 L76 282 Q68 282 68 275 Z" fill="url(#maleShorts)"/>
-
-        <!-- 身体/红色T恤 -->
-        <path d="M68 175 Q65 165 82 160 L138 160 Q155 165 152 175 L155 232 Q155 238 148 238 L72 238 Q65 238 65 232 Z" fill="url(#maleShirt)" filter="url(#softShadow)"/>
-        <!-- 领口 -->
-        <path d="M90 160 Q110 175 130 160" fill="none" stroke="#a01830" stroke-width="2"/>
-        <!-- T恤文字 -->
-        <text x="110" y="198" text-anchor="middle" fill="#fff" font-family="Arial Black, sans-serif" font-size="13" font-weight="bold">Mardis</text>
-        <text x="110" y="214" text-anchor="middle" fill="#fff" font-family="Arial Black, sans-serif" font-size="13" font-weight="bold">Comeon</text>
-        <!-- T恤高光 -->
-        <path d="M75 170 Q78 200 80 230" fill="none" stroke="#fff" stroke-width="3" opacity="0.15"/>
-
-        <!-- 左手臂（自然下垂） -->
-        <g class="arm-left" id="maleLeftArm">
-          <path d="M68 175 Q52 200 55 245 Q57 258 68 258 Q78 252 76 240 Q72 205 78 178" fill="url(#maleShirt)"/>
-          <circle cx="62" cy="258" r="12" fill="url(#maleFace)"/>
-          <circle cx="59" cy="255" r="4" fill="#fff" opacity="0.3"/>
-        </g>
-        <!-- 右手臂（自然下垂） -->
-        <g class="arm-right" id="maleRightArm">
-          <path d="M152 175 Q168 200 165 245 Q163 258 152 258 Q142 252 144 240 Q148 205 142 178" fill="url(#maleShirt)"/>
-          <circle cx="158" cy="258" r="12" fill="url(#maleFace)"/>
-          <circle cx="161" cy="255" r="4" fill="#fff" opacity="0.3"/>
-        </g>
-
-        <!-- 脖子 -->
-        <rect x="96" y="148" width="28" height="20" fill="url(#maleFace)"/>
-        <ellipse cx="110" cy="155" rx="14" ry="5" fill="#e8a87c" opacity="0.3"/>
-
-        <!-- 耳朵 -->
-        <ellipse cx="58" cy="115" rx="12" ry="17" fill="url(#maleFace)"/>
-        <ellipse cx="162" cy="115" rx="12" ry="17" fill="url(#maleFace)"/>
-        <ellipse cx="58" cy="117" rx="6" ry="10" fill="#e8a87c" opacity="0.4"/>
-        <ellipse cx="162" cy="117" rx="6" ry="10" fill="#e8a87c" opacity="0.4"/>
-
-        <!-- 脸 -->
-        <ellipse cx="110" cy="112" rx="52" ry="56" fill="url(#maleFace)" filter="url(#softShadow)"/>
-        <!-- 脸部高光 -->
-        <ellipse cx="90" cy="90" rx="20" ry="15" fill="#fff" opacity="0.15"/>
-        <!-- 腮红 -->
-        <ellipse cx="72" cy="128" rx="12" ry="8" fill="url(#maleCheek)"/>
-        <ellipse cx="148" cy="128" rx="12" ry="8" fill="url(#maleCheek)"/>
-
-        <!-- 头发（后面） -->
-        <path d="M58 100 Q50 60 75 48 Q90 40 110 42 Q135 40 148 52 Q168 62 162 102 Q158 80 140 72 Q125 65 110 67 Q90 64 75 73 Q60 82 58 100 Z" fill="url(#maleHair)"/>
-
-        <!-- 眉毛 -->
-        <path d="M78 96 Q88 91 98 96" fill="none" stroke="#2a2a2a" stroke-width="4" stroke-linecap="round"/>
-        <path d="M122 96 Q132 91 142 96" fill="none" stroke="#2a2a2a" stroke-width="4" stroke-linecap="round"/>
-
-        <!-- 眼睛 -->
-        <ellipse cx="88" cy="112" rx="11" ry="13" fill="#fff"/>
-        <ellipse cx="132" cy="112" rx="11" ry="13" fill="#fff"/>
-        <ellipse cx="89" cy="114" rx="8" ry="10" fill="#5c3a21"/>
-        <ellipse cx="133" cy="114" rx="8" ry="10" fill="#5c3a21"/>
-        <circle cx="91" cy="110" r="3.5" fill="#fff"/>
-        <circle cx="135" cy="110" r="3.5" fill="#fff"/>
-        <circle cx="86" cy="117" r="1.5" fill="#fff" opacity="0.6"/>
-        <circle cx="130" cy="117" r="1.5" fill="#fff" opacity="0.6"/>
-
-        <!-- 鼻子 -->
-        <path d="M110 120 Q107 128 110 132 Q113 128 110 120" fill="none" stroke="#d4956a" stroke-width="1.5" opacity="0.5"/>
-
-        <!-- 嘴巴（微笑） -->
-        <path d="M96 142 Q110 152 124 142" fill="none" stroke="#c53030" stroke-width="2.5" stroke-linecap="round"/>
-        <path d="M99 143 Q110 149 121 143" fill="#ff6b8a" opacity="0.4"/>
-
-        <!-- 刘海（前面，锯齿状） -->
-        <path d="M62 92 Q65 68 82 60 Q90 55 100 57 Q105 52 112 55 Q120 52 128 58 Q145 62 152 85 Q145 75 135 73 Q128 70 120 72 Q112 68 105 71 Q98 68 90 72 Q80 70 72 76 Q65 80 62 92 Z" fill="url(#maleHair)"/>
-        <!-- 刘海高光 -->
-        <path d="M75 65 Q85 58 95 60" fill="none" stroke="#555" stroke-width="2" opacity="0.4"/>
+        <!-- 屋檐 -->
+        <rect x="0" y="190" width="900" height="12" rx="2" fill="#2d1f12"/>
+        <!-- 屋檐高光 -->
+        <rect x="0" y="190" width="900" height="3" fill="#6b4c30" opacity="0.5"/>
+        <!-- 屋脊 -->
+        <path d="M0 120 Q450 40 900 120" fill="none" stroke="#1a1008" stroke-width="6"/>
+        <path d="M0 120 Q450 40 900 120" fill="none" stroke="#6b4c30" stroke-width="2" opacity="0.5"/>
       </svg>
     </div>
 
-    <!-- 女生 -->
-    <div class="character" id="femaleChar">
-      <div class="speech-bubble bubble-female" id="femaleBubble"></div>
-      <svg viewBox="0 0 220 360" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="femaleFace" cx="40%" cy="35%" r="65%">
-            <stop offset="0%" stop-color="#ffe8d6"/>
-            <stop offset="60%" stop-color="#ffd4b8"/>
-            <stop offset="100%" stop-color="#f5b894"/>
-          </radialGradient>
-          <radialGradient id="femaleHair" cx="50%" cy="30%" r="70%">
-            <stop offset="0%" stop-color="#3d3028"/>
-            <stop offset="100%" stop-color="#1f1815"/>
-          </radialGradient>
-          <linearGradient id="femaleShirt" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#ffffff"/>
-            <stop offset="100%" stop-color="#f0ebe4"/>
-          </linearGradient>
-          <linearGradient id="femaleSkirt" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#6ba3e8"/>
-            <stop offset="100%" stop-color="#4a85c9"/>
-          </linearGradient>
-          <radialGradient id="femaleCheek" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#ff9999" stop-opacity="0.6"/>
-            <stop offset="100%" stop-color="#ff9999" stop-opacity="0"/>
-          </radialGradient>
-          <filter id="softShadow2" x="-20%" y="-20%" width="140%" height="140%">
-            <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.25"/>
-          </filter>
-        </defs>
+    <!-- 两人背影 -->
+    <div class="couple" id="couple">
+      <!-- 男生背影（左） -->
+      <div class="character char-male" id="maleChar">
+        <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="mHair" cx="50%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#3d3d3d"/>
+              <stop offset="100%" stop-color="#1a1a1a"/>
+            </radialGradient>
+            <linearGradient id="mShirt" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#e8384f"/>
+              <stop offset="100%" stop-color="#b01830"/>
+            </linearGradient>
+            <linearGradient id="mShorts" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#2d2d2d"/>
+              <stop offset="100%" stop-color="#1a1a1a"/>
+            </linearGradient>
+            <filter id="mShadow"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/></filter>
+          </defs>
 
-        <!-- 影子 -->
-        <ellipse cx="110" cy="350" rx="55" ry="8" fill="#000" opacity="0.2"/>
+          <!-- 影子 -->
+          <ellipse cx="100" cy="275" rx="50" ry="6" fill="#000" opacity="0.2"/>
 
-        <!-- 左腿 -->
-        <rect x="84" y="272" width="22" height="50" rx="9" fill="url(#femaleFace)"/>
-        <!-- 右腿 -->
-        <rect x="114" y="272" width="22" height="50" rx="9" fill="url(#femaleFace)"/>
-        <!-- 白袜子 -->
-        <rect x="82" y="310" width="26" height="16" rx="6" fill="#f5f5f5"/>
-        <rect x="112" y="310" width="26" height="16" rx="6" fill="#f5f5f5"/>
-        <!-- 左鞋 -->
-        <g filter="url(#softShadow2)">
-          <ellipse cx="95" cy="338" rx="19" ry="11" fill="#f0ebe4"/>
-          <rect x="78" y="335" width="34" height="7" rx="3" fill="#8b6f47"/>
-          <ellipse cx="95" cy="332" rx="16" ry="5" fill="#fff" opacity="0.4"/>
-        </g>
-        <!-- 右鞋 -->
-        <g filter="url(#softShadow2)">
-          <ellipse cx="125" cy="338" rx="19" ry="11" fill="#f0ebe4"/>
-          <rect x="108" y="335" width="34" height="7" rx="3" fill="#8b6f47"/>
-          <ellipse cx="125" cy="332" rx="16" ry="5" fill="#fff" opacity="0.4"/>
-        </g>
+          <!-- 左腿（弯曲坐姿：大腿水平，小腿垂下） -->
+          <path d="M70 180 Q68 188 72 198 L74 248" stroke="#f5c9a8" stroke-width="20" stroke-linecap="round" fill="none"/>
+          <!-- 右腿 -->
+          <path d="M130 180 Q132 188 128 198 L126 248" stroke="#f5c9a8" stroke-width="20" stroke-linecap="round" fill="none"/>
+          <!-- 左鞋 -->
+          <ellipse cx="76" cy="258" rx="15" ry="8" fill="#8b0000"/>
+          <rect x="62" y="253" width="28" height="6" rx="3" fill="#fff"/>
+          <!-- 右鞋 -->
+          <ellipse cx="124" cy="258" rx="15" ry="8" fill="#8b0000"/>
+          <rect x="110" y="253" width="28" height="6" rx="3" fill="#fff"/>
 
-        <!-- 蓝色短裙 -->
-        <path d="M70 225 L58 290 Q57 298 66 298 L154 298 Q163 298 162 290 L150 225 Z" fill="url(#femaleSkirt)" filter="url(#softShadow2)"/>
-        <!-- 裙褶 -->
-        <line x1="85" y1="235" x2="78" y2="295" stroke="#3d6fa8" stroke-width="1.5" opacity="0.4"/>
-        <line x1="110" y1="235" x2="110" y2="297" stroke="#3d6fa8" stroke-width="1.5" opacity="0.4"/>
-        <line x1="135" y1="235" x2="142" y2="295" stroke="#3d6fa8" stroke-width="1.5" opacity="0.4"/>
-        <!-- 裙腰 -->
-        <rect x="70" y="222" width="80" height="10" rx="3" fill="#3d6fa8"/>
+          <!-- 黑短裤（坐姿） -->
+          <path d="M62 160 Q60 155 70 152 L130 152 Q140 155 138 160 L142 195 Q142 200 134 200 L108 200 L105 188 L95 188 L92 200 L66 200 Q58 200 58 195 Z" fill="url(#mShorts)" filter="url(#mShadow)"/>
 
-        <!-- 白色T恤 -->
-        <path d="M68 175 Q65 165 82 160 L138 160 Q155 165 152 175 L155 230 Q155 236 148 236 L72 236 Q65 236 65 230 Z" fill="url(#femaleShirt)" filter="url(#softShadow2)"/>
-        <!-- 领口 -->
-        <path d="M90 160 Q110 173 130 160" fill="none" stroke="#d4cfc5" stroke-width="2"/>
-        <!-- T恤花纹 -->
-        <text x="110" y="200" text-anchor="middle" fill="#c4b8a8" font-family="cursive" font-size="11" opacity="0.7">Sweet</text>
-        <circle cx="95" cy="210" r="4" fill="#e8c4d0" opacity="0.5"/>
-        <circle cx="125" cy="212" r="3" fill="#e8c4d0" opacity="0.5"/>
-        <!-- T恤高光 -->
-        <path d="M76 172 Q79 200 81 228" fill="none" stroke="#fff" stroke-width="4" opacity="0.3"/>
+          <!-- 身体/红T恤（坐姿背影，微微抬头） -->
+          <path d="M58 100 Q55 90 75 85 L125 85 Q145 90 142 100 L145 162 Q145 168 138 168 L62 168 Q55 168 55 162 Z" fill="url(#mShirt)" filter="url(#mShadow)"/>
+          <!-- 后背领口 -->
+          <path d="M82 85 Q100 95 118 85" fill="none" stroke="#8b0000" stroke-width="2"/>
+          <!-- T恤后背文字（倒着看不明显，用装饰） -->
+          <ellipse cx="100" cy="125" rx="25" ry="8" fill="#fff" opacity="0.08"/>
+          <!-- 衣服褶皱 -->
+          <path d="M70 110 Q72 135 70 160" fill="none" stroke="#8b0000" stroke-width="1" opacity="0.3"/>
+          <path d="M130 110 Q128 135 130 160" fill="none" stroke="#8b0000" stroke-width="1" opacity="0.3"/>
 
-        <!-- 左手臂 -->
-        <g class="arm-left" id="femaleLeftArm">
-          <path d="M68 175 Q52 200 55 245 Q57 257 67 257 Q77 251 75 240 Q71 205 77 178" fill="url(#femaleShirt)"/>
-          <circle cx="61" cy="257" r="11" fill="url(#femaleFace)"/>
-          <circle cx="58" cy="254" r="3.5" fill="#fff" opacity="0.3"/>
-        </g>
-        <!-- 右手臂 -->
-        <g class="arm-right" id="femaleRightArm">
-          <path d="M152 175 Q168 200 165 245 Q163 257 153 257 Q143 251 145 240 Q149 205 143 178" fill="url(#femaleShirt)"/>
-          <circle cx="159" cy="257" r="11" fill="url(#femaleFace)"/>
-          <circle cx="162" cy="254" r="3.5" fill="#fff" opacity="0.3"/>
-        </g>
+          <!-- 左手臂（放在身侧/膝盖上，背影） -->
+          <g class="arm-left" id="maleLeftArm">
+            <path d="M58 100 Q42 120 48 155 Q50 168 62 168 Q72 162 70 150 Q66 125 72 102" fill="url(#mShirt)"/>
+            <circle cx="55" cy="166" r="10" fill="#f5c9a8"/>
+          </g>
+          <!-- 右手臂 -->
+          <g class="arm-right" id="maleRightArm">
+            <path d="M142 100 Q158 120 152 155 Q150 168 138 168 Q128 162 130 150 Q134 125 128 102" fill="url(#mShirt)"/>
+            <circle cx="145" cy="166" r="10" fill="#f5c9a8"/>
+          </g>
 
-        <!-- 脖子 -->
-        <rect x="97" y="148" width="26" height="18" fill="url(#femaleFace)"/>
-        <ellipse cx="110" cy="154" rx="13" ry="4" fill="#e8a87c" opacity="0.3"/>
+          <!-- 脖子（背影） -->
+          <rect x="88" y="72" width="24" height="18" fill="#e8b894"/>
+          <ellipse cx="100" cy="78" rx="12" ry="4" fill="#d4a574" opacity="0.4"/>
 
-        <!-- 低马尾（后面） -->
-        <path d="M155 130 Q175 155 172 195 Q170 210 160 208 Q165 180 160 150 Q158 138 155 130 Z" fill="url(#femaleHair)"/>
-        <path d="M158 145 Q168 165 166 190" fill="none" stroke="#5a4a3a" stroke-width="2" opacity="0.3"/>
+          <!-- 后脑勺（黑色短发，能看到侧面一点刘海） -->
+          <ellipse cx="100" cy="50" rx="42" ry="44" fill="url(#mHair)" filter="url(#mShadow)"/>
+          <!-- 头发纹理 -->
+          <path d="M65 40 Q75 25 95 22 Q100 20 105 22 Q125 25 135 40" fill="none" stroke="#555" stroke-width="2" opacity="0.4"/>
+          <path d="M62 50 Q70 35 85 30" fill="none" stroke="#555" stroke-width="1.5" opacity="0.3"/>
+          <path d="M138 50 Q130 35 115 30" fill="none" stroke="#555" stroke-width="1.5" opacity="0.3"/>
+          <!-- 左侧露出一点刘海（表示有刘海） -->
+          <path d="M60 45 Q58 35 65 28 Q68 38 66 48 Z" fill="url(#mHair)"/>
+          <!-- 右侧刘海 -->
+          <path d="M140 45 Q142 35 135 28 Q132 38 134 48 Z" fill="url(#mHair)"/>
+          <!-- 耳朵（从后面能看到一点） -->
+          <ellipse cx="60" cy="52" rx="6" ry="9" fill="#e8b894"/>
+          <ellipse cx="140" cy="52" rx="6" ry="9" fill="#e8b894"/>
+          <!-- 头部高光 -->
+          <ellipse cx="85" cy="35" rx="15" ry="10" fill="#fff" opacity="0.08"/>
+        </svg>
+      </div>
 
-        <!-- 耳朵 -->
-        <ellipse cx="59" cy="115" rx="11" ry="16" fill="url(#femaleFace)"/>
-        <ellipse cx="161" cy="115" rx="11" ry="16" fill="url(#femaleFace)"/>
-        <ellipse cx="59" cy="117" rx="5" ry="9" fill="#e8a87c" opacity="0.4"/>
-        <ellipse cx="161" cy="117" rx="5" ry="9" fill="#e8a87c" opacity="0.4"/>
+      <!-- 女生背影（右） -->
+      <div class="character char-female" id="femaleChar">
+        <svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="fHair" cx="50%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#3d3028"/>
+              <stop offset="100%" stop-color="#1f1815"/>
+            </radialGradient>
+            <linearGradient id="fShirt" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="100%" stop-color="#e8e2d8"/>
+            </linearGradient>
+            <linearGradient id="fSkirt" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#6ba3e8"/>
+              <stop offset="100%" stop-color="#4a85c9"/>
+            </linearGradient>
+            <filter id="fShadow"><feDropShadow dx="0" dy="3" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/></filter>
+          </defs>
 
-        <!-- 脸 -->
-        <ellipse cx="110" cy="112" rx="51" ry="55" fill="url(#femaleFace)" filter="url(#softShadow2)"/>
-        <ellipse cx="90" cy="90" rx="19" ry="14" fill="#fff" opacity="0.15"/>
-        <!-- 腮红 -->
-        <ellipse cx="73" cy="128" rx="12" ry="8" fill="url(#femaleCheek)"/>
-        <ellipse cx="147" cy="128" rx="12" ry="8" fill="url(#femaleCheek)"/>
+          <!-- 影子 -->
+          <ellipse cx="100" cy="275" rx="50" ry="6" fill="#000" opacity="0.2"/>
 
-        <!-- 头发（后部） -->
-        <path d="M59 98 Q52 58 78 46 Q92 38 110 40 Q132 38 146 50 Q166 60 161 100 Q157 78 140 70 Q125 63 110 65 Q92 62 78 71 Q62 80 59 98 Z" fill="url(#femaleHair)"/>
+          <!-- 左腿（弯曲坐姿） -->
+          <path d="M72 185 Q70 193 74 202 L76 248" stroke="#f5c9a8" stroke-width="18" stroke-linecap="round" fill="none"/>
+          <!-- 右腿 -->
+          <path d="M128 185 Q130 193 126 202 L124 248" stroke="#f5c9a8" stroke-width="18" stroke-linecap="round" fill="none"/>
+          <!-- 左鞋 -->
+          <ellipse cx="78" cy="257" rx="14" ry="7" fill="#e8e2d8"/>
+          <rect x="64" y="252" width="28" height="5" rx="2" fill="#8b6f47"/>
+          <!-- 右鞋 -->
+          <ellipse cx="122" cy="257" rx="14" ry="7" fill="#e8e2d8"/>
+          <rect x="108" y="252" width="28" height="5" rx="2" fill="#8b6f47"/>
 
-        <!-- 眉毛 -->
-        <path d="M79 95 Q88 90 97 95" fill="none" stroke="#3d2b1f" stroke-width="3.5" stroke-linecap="round"/>
-        <path d="M123 95 Q132 90 141 95" fill="none" stroke="#3d2b1f" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- 蓝裙（坐姿） -->
+          <path d="M60 155 L50 200 Q49 206 58 206 L142 206 Q151 206 150 200 L140 155 Z" fill="url(#fSkirt)" filter="url(#fShadow)"/>
+          <!-- 裙褶 -->
+          <line x1="78" y1="162" x2="70" y2="203" stroke="#3d6fa8" stroke-width="1.5" opacity="0.4"/>
+          <line x1="100" y1="162" x2="100" y2="205" stroke="#3d6fa8" stroke-width="1.5" opacity="0.4"/>
+          <line x1="122" y1="162" x2="130" y2="203" stroke="#3d6fa8" stroke-width="1.5" opacity="0.4"/>
+          <!-- 裙腰 -->
+          <rect x="60" y="152" width="80" height="8" rx="2" fill="#3d6fa8"/>
 
-        <!-- 眼睛 -->
-        <ellipse cx="88" cy="112" rx="10" ry="12" fill="#fff"/>
-        <ellipse cx="132" cy="112" rx="10" ry="12" fill="#fff"/>
-        <ellipse cx="89" cy="114" rx="7.5" ry="9.5" fill="#5c3a21"/>
-        <ellipse cx="133" cy="114" rx="7.5" ry="9.5" fill="#5c3a21"/>
-        <circle cx="91" cy="110" r="3" fill="#fff"/>
-        <circle cx="135" cy="110" r="3" fill="#fff"/>
-        <circle cx="86" cy="117" r="1.3" fill="#fff" opacity="0.6"/>
-        <circle cx="130" cy="117" r="1.3" fill="#fff" opacity="0.6"/>
+          <!-- 白T恤（坐姿背影） -->
+          <path d="M58 100 Q55 90 75 85 L125 85 Q145 90 142 100 L145 158 Q145 164 138 164 L62 164 Q55 164 55 158 Z" fill="url(#fShirt)" filter="url(#fShadow)"/>
+          <!-- 后背领口 -->
+          <path d="M82 85 Q100 95 118 85" fill="none" stroke="#d4cfc5" stroke-width="2"/>
+          <!-- 衣服褶皱 -->
+          <path d="M70 108 Q72 130 70 155" fill="none" stroke="#d4cfc5" stroke-width="1" opacity="0.4"/>
+          <path d="M130 108 Q128 130 130 155" fill="none" stroke="#d4cfc5" stroke-width="1" opacity="0.4"/>
+          <!-- 后背小装饰 -->
+          <circle cx="100" cy="125" r="6" fill="#e8c4d0" opacity="0.4"/>
+          <circle cx="92" cy="130" r="3" fill="#e8c4d0" opacity="0.3"/>
+          <circle cx="108" cy="130" r="3" fill="#e8c4d0" opacity="0.3"/>
 
-        <!-- 红色圆框眼镜 -->
-        <circle cx="88" cy="112" r="16" fill="none" stroke="#c41e3a" stroke-width="3"/>
-        <circle cx="132" cy="112" r="16" fill="none" stroke="#c41e3a" stroke-width="3"/>
-        <line x1="104" y1="112" x2="116" y2="112" stroke="#c41e3a" stroke-width="3"/>
-        <line x1="72" y1="110" x2="62" y2="107" stroke="#c41e3a" stroke-width="2.5"/>
-        <line x1="148" y1="110" x2="158" y2="107" stroke="#c41e3a" stroke-width="2.5"/>
-        <!-- 眼镜反光 -->
-        <path d="M80 104 Q85 100 92 102" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
-        <path d="M124 104 Q129 100 136 102" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+          <!-- 左手臂 -->
+          <g class="arm-left" id="femaleLeftArm">
+            <path d="M58 100 Q42 120 48 155 Q50 166 60 166 Q70 160 68 150 Q64 125 70 102" fill="url(#fShirt)"/>
+            <circle cx="54" cy="164" r="9" fill="#f5c9a8"/>
+          </g>
+          <!-- 右手臂 -->
+          <g class="arm-right" id="femaleRightArm">
+            <path d="M142 100 Q158 120 152 155 Q150 166 140 166 Q130 160 132 150 Q136 125 130 102" fill="url(#fShirt)"/>
+            <circle cx="146" cy="164" r="9" fill="#f5c9a8"/>
+          </g>
 
-        <!-- 鼻子 -->
-        <path d="M110 120 Q107 127 110 130 Q113 127 110 120" fill="none" stroke="#d4956a" stroke-width="1.3" opacity="0.5"/>
+          <!-- 脖子 -->
+          <rect x="89" y="72" width="22" height="16" fill="#e8b894"/>
+          <ellipse cx="100" cy="77" rx="11" ry="4" fill="#d4a574" opacity="0.4"/>
 
-        <!-- 嘴巴 -->
-        <path d="M98 141 Q110 150 122 141" fill="none" stroke="#c53030" stroke-width="2.2" stroke-linecap="round"/>
-        <path d="M100 142 Q110 147 120 142" fill="#ff6b8a" opacity="0.4"/>
+          <!-- 低马尾（从后面垂下来） -->
+          <path d="M135 60 Q155 80 152 130 Q150 145 140 143 Q145 115 140 85 Q138 70 135 60 Z" fill="url(#fHair)"/>
+          <path d="M138 75 Q148 95 146 125" fill="none" stroke="#5a4a3a" stroke-width="1.5" opacity="0.3"/>
+          <!-- 发圈 -->
+          <ellipse cx="140" cy="68" rx="6" ry="4" fill="#c41e3a"/>
 
-        <!-- 斜刘海（前面） -->
-        <path d="M62 90 Q66 65 85 56 Q95 50 108 52 Q118 48 128 53 Q145 58 152 82 Q145 72 132 70 Q122 66 112 69 Q100 64 88 68 Q75 66 66 75 Q62 82 62 90 Z" fill="url(#femaleHair)"/>
-        <!-- 刘海高光 -->
-        <path d="M72 68 Q82 60 92 62" fill="none" stroke="#5a4a3a" stroke-width="2" opacity="0.4"/>
-      </svg>
+          <!-- 后脑勺（圆圆的，黑色头发，有刘海从侧面露出） -->
+          <ellipse cx="100" cy="48" rx="43" ry="46" fill="url(#fHair)" filter="url(#fShadow)"/>
+          <!-- 头发纹理 -->
+          <path d="M63 38 Q75 22 95 20 Q100 18 105 20 Q125 22 137 38" fill="none" stroke="#5a4a3a" stroke-width="2" opacity="0.4"/>
+          <path d="M60 48 Q68 32 85 27" fill="none" stroke="#5a4a3a" stroke-width="1.5" opacity="0.3"/>
+          <path d="M140 48 Q132 32 115 27" fill="none" stroke="#5a4a3a" stroke-width="1.5" opacity="0.3"/>
+          <!-- 左侧刘海（从后面能看到刘海轮廓，表示有刘海） -->
+          <path d="M58 42 Q55 30 62 22 Q66 34 64 46 Z" fill="url(#fHair)"/>
+          <!-- 右侧刘海 -->
+          <path d="M142 42 Q145 30 138 22 Q134 34 136 46 Z" fill="url(#fHair)"/>
+          <!-- 耳朵 -->
+          <ellipse cx="59" cy="50" rx="5" ry="8" fill="#e8b894"/>
+          <ellipse cx="141" cy="50" rx="5" ry="8" fill="#e8b894"/>
+          <!-- 头部高光（圆圆的脑袋） -->
+          <ellipse cx="85" cy="32" rx="16" ry="11" fill="#fff" opacity="0.1"/>
+          <!-- 后脑勺圆润感 -->
+          <ellipse cx="100" cy="55" rx="38" ry="38" fill="none" stroke="#5a4a3a" stroke-width="1" opacity="0.2"/>
+        </svg>
+      </div>
     </div>
 
     <!-- Kiss提示点 -->
-    <div class="kiss-dot" id="dotMaleForehead" data-target="male" data-part="forehead"></div>
+    <div class="kiss-dot" id="dotMaleHead" data-target="male" data-part="head"></div>
     <div class="kiss-dot" id="dotMaleCheek" data-target="male" data-part="cheek"></div>
-    <div class="kiss-dot" id="dotMaleMouth" data-target="male" data-part="mouth"></div>
-    <div class="kiss-dot" id="dotFemaleForehead" data-target="female" data-part="forehead"></div>
+    <div class="kiss-dot" id="dotMaleEar" data-target="male" data-part="ear"></div>
+    <div class="kiss-dot" id="dotFemaleHead" data-target="female" data-part="head"></div>
     <div class="kiss-dot" id="dotFemaleCheek" data-target="female" data-part="cheek"></div>
-    <div class="kiss-dot" id="dotFemaleMouth" data-target="female" data-part="mouth"></div>
+    <div class="kiss-dot" id="dotFemaleEar" data-target="female" data-part="ear"></div>
     <div class="kiss-hint" id="kissHint">点击亲吻部位 ♡</div>
   </div>
+
+  <!-- 对话框（放在scene层级） -->
+  <div class="speech-bubble bubble-male" id="maleBubble" style="position:fixed;"></div>
+  <div class="speech-bubble bubble-female" id="femaleBubble" style="position:fixed;"></div>
 
   <div class="buttons">
     <button class="mode-btn" data-mode="hug">🤗 拥抱模式</button>
@@ -486,88 +438,57 @@
 
 <script>
 // 星空
-const starsContainer = document.getElementById('stars');
-for (let i = 0; i < 100; i++) {
-  const s = document.createElement('div');
-  s.className = 'star';
-  s.style.left = Math.random()*100+'%'; s.style.top = Math.random()*70+'%';
-  s.style.width = s.style.height = (Math.random()*3+1)+'px';
-  s.style.animationDelay = Math.random()*3+'s';
-  starsContainer.appendChild(s);
-}
+const starsContainer=document.getElementById('stars');
+for(let i=0;i<120;i++){const s=document.createElement('div');s.className='star';s.style.left=Math.random()*100+'%';s.style.top=Math.random()*65+'%';s.style.width=s.style.height=(Math.random()*3+1)+'px';s.style.animationDelay=Math.random()*3+'s';starsContainer.appendChild(s);}
 
 // 烟花
-const canvas = document.getElementById('fireworks');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
-const particles = [], rockets = [];
-class Rocket {
-  constructor() { this.x=Math.random()*canvas.width; this.y=canvas.height; this.targetY=Math.random()*canvas.height*0.4+50; this.speed=6+Math.random()*4; this.color=`hsl(${Math.random()*60+300},100%,70%)`; this.trail=[]; }
-  update() { this.trail.push({x:this.x,y:this.y}); if(this.trail.length>8)this.trail.shift(); this.y-=this.speed; if(this.y<=this.targetY){this.explode();return false;} return true; }
-  explode() { const c=60+Math.floor(Math.random()*40); for(let i=0;i<c;i++){const a=(Math.PI*2/c)*i;const sp=2+Math.random()*4;particles.push(new Particle(this.x,this.y,Math.cos(a)*sp,Math.sin(a)*sp,this.color));} }
-  draw() { this.trail.forEach((p,i)=>{ctx.beginPath();ctx.arc(p.x,p.y,(i/this.trail.length)*3,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=i/this.trail.length;ctx.fill();}); ctx.globalAlpha=1; }
-}
-class Particle {
-  constructor(x,y,vx,vy,color){this.x=x;this.y=y;this.vx=vx;this.vy=vy;this.color=color;this.alpha=1;this.decay=0.008+Math.random()*0.012;this.size=2+Math.random()*2;}
-  update(){this.x+=this.vx;this.y+=this.vy;this.vy+=0.04;this.vx*=0.99;this.alpha-=this.decay;return this.alpha>0;}
-  draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;}
-}
-function animate() {
-  ctx.fillStyle='rgba(10,10,46,0.15)'; ctx.fillRect(0,0,canvas.width,canvas.height);
-  if(Math.random()<0.04) rockets.push(new Rocket());
-  for(let i=rockets.length-1;i>=0;i--){if(!rockets[i].update())rockets.splice(i,1);else rockets[i].draw();}
-  for(let i=particles.length-1;i>=0;i--){if(!particles[i].update())particles.splice(i,1);else particles[i].draw();}
-  requestAnimationFrame(animate);
-}
+const canvas=document.getElementById('fireworks');const ctx=canvas.getContext('2d');
+canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+const particles=[],rockets=[];
+class Rocket{constructor(){this.x=Math.random()*canvas.width;this.y=canvas.height;this.targetY=Math.random()*canvas.height*0.45+40;this.speed=6+Math.random()*4;this.color=`hsl(${Math.random()*60+300},100%,70%)`;this.trail=[];}
+update(){this.trail.push({x:this.x,y:this.y});if(this.trail.length>8)this.trail.shift();this.y-=this.speed;if(this.y<=this.targetY){this.explode();return false;}return true;}
+explode(){const c=60+Math.floor(Math.random()*40);for(let i=0;i<c;i++){const a=(Math.PI*2/c)*i;const sp=2+Math.random()*4;particles.push(new Particle(this.x,this.y,Math.cos(a)*sp,Math.sin(a)*sp,this.color));}}
+draw(){this.trail.forEach((p,i)=>{ctx.beginPath();ctx.arc(p.x,p.y,(i/this.trail.length)*3,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=i/this.trail.length;ctx.fill();});ctx.globalAlpha=1;}}
+class Particle{constructor(x,y,vx,vy,color){this.x=x;this.y=y;this.vx=vx;this.vy=vy;this.color=color;this.alpha=1;this.decay=0.008+Math.random()*0.012;this.size=2+Math.random()*2;}
+update(){this.x+=this.vx;this.y+=this.vy;this.vy+=0.04;this.vx*=0.99;this.alpha-=this.decay;return this.alpha>0;}
+draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fillStyle=this.color;ctx.globalAlpha=this.alpha;ctx.fill();ctx.globalAlpha=1;}}
+function animate(){ctx.fillStyle='rgba(10,10,46,0.15)';ctx.fillRect(0,0,canvas.width,canvas.height);if(Math.random()<0.04)rockets.push(new Rocket());for(let i=rockets.length-1;i>=0;i--){if(!rockets[i].update())rockets.splice(i,1);else rockets[i].draw();}for(let i=particles.length-1;i>=0;i--){if(!particles[i].update())particles.splice(i,1);else particles[i].draw();}requestAnimationFrame(animate);}
 animate();
 
 // 爱心
-const heartsContainer = document.getElementById('heartsContainer');
-const heartEmojis = ['💕','💖','💗','💓','💝','❤️','💘'];
-function spawnHeart(x,y) {
-  const h = document.createElement('div'); h.className='floating-heart';
-  h.textContent = heartEmojis[Math.floor(Math.random()*heartEmojis.length)];
-  h.style.left = (x||Math.random()*window.innerWidth)+'px';
-  h.style.top = (y||window.innerHeight*0.6)+'px';
-  h.style.fontSize = (Math.random()*16+18)+'px';
-  h.style.animationDuration = (Math.random()*2+3)+'s';
-  heartsContainer.appendChild(h); setTimeout(()=>h.remove(),5000);
-}
-let heartInterval = null;
-function startHearts(){ stopHearts(); heartInterval=setInterval(()=>spawnHeart(),400); }
-function stopHearts(){ if(heartInterval)clearInterval(heartInterval); heartInterval=null; }
+const heartsContainer=document.getElementById('heartsContainer');
+const heartEmojis=['💕','💖','💗','💓','💝','❤️','💘'];
+function spawnHeart(x,y){const h=document.createElement('div');h.className='floating-heart';h.textContent=heartEmojis[Math.floor(Math.random()*heartEmojis.length)];h.style.left=(x||Math.random()*window.innerWidth)+'px';h.style.top=(y||window.innerHeight*0.5)+'px';h.style.fontSize=(Math.random()*16+18)+'px';h.style.animationDuration=(Math.random()*2+3)+'s';heartsContainer.appendChild(h);setTimeout(()=>h.remove(),5000);}
+let heartInterval=null;
+function startHearts(){stopHearts();heartInterval=setInterval(()=>spawnHeart(),400);}
+function stopHearts(){if(heartInterval)clearInterval(heartInterval);heartInterval=null;}
 
 // DOM
-const maleChar = document.getElementById('maleChar');
-const femaleChar = document.getElementById('femaleChar');
-const maleBubble = document.getElementById('maleBubble');
-const femaleBubble = document.getElementById('femaleBubble');
-const changeBtn = document.getElementById('changeBtn');
-const kissHint = document.getElementById('kissHint');
-const dots = document.querySelectorAll('.kiss-dot');
-const maleLeftArm = document.getElementById('maleLeftArm');
-const maleRightArm = document.getElementById('maleRightArm');
-const femaleLeftArm = document.getElementById('femaleLeftArm');
-const femaleRightArm = document.getElementById('femaleRightArm');
+const maleChar=document.getElementById('maleChar');
+const femaleChar=document.getElementById('femaleChar');
+const maleBubble=document.getElementById('maleBubble');
+const femaleBubble=document.getElementById('femaleBubble');
+const changeBtn=document.getElementById('changeBtn');
+const kissHint=document.getElementById('kissHint');
+const dots=document.querySelectorAll('.kiss-dot');
+const maleLeftArm=document.getElementById('maleLeftArm');
+const maleRightArm=document.getElementById('maleRightArm');
+const femaleLeftArm=document.getElementById('femaleLeftArm');
+const femaleRightArm=document.getElementById('femaleRightArm');
+const couple=document.getElementById('couple');
 
-function resetCharacters() {
-  maleChar.style.transform = '';
-  femaleChar.style.transform = '';
-  maleLeftArm.style.transform = '';
-  maleRightArm.style.transform = '';
-  femaleLeftArm.style.transform = '';
-  femaleRightArm.style.transform = '';
-  maleBubble.classList.remove('show');
-  femaleBubble.classList.remove('show');
-  changeBtn.classList.remove('show');
-  kissHint.classList.remove('show');
-  dots.forEach(d=>d.classList.remove('show'));
-  stopHearts();
+function resetCharacters(){
+  maleChar.style.transform='';femaleChar.style.transform='';
+  maleLeftArm.style.transform='';maleRightArm.style.transform='';
+  femaleLeftArm.style.transform='';femaleRightArm.style.transform='';
+  maleBubble.classList.remove('show');femaleBubble.classList.remove('show');
+  changeBtn.classList.remove('show');kissHint.classList.remove('show');
+  dots.forEach(d=>d.classList.remove('show'));stopHearts();
 }
 
 // 8种情话
-const loveWords = [
+const loveWords=[
   {male:'我好想你。',female:'一日不见，如三月兮。'},
   {male:'你今天真好看。',female:'你也是，我的小狗最帅。'},
   {male:'今晚的月亮真美。',female:'风也温柔，因为想你。'},
@@ -577,149 +498,147 @@ const loveWords = [
   {male:'今天累不累？',female:'看到你就不累了。'},
   {male:'我喜欢你。',female:'我更喜欢你，我的小狗。'}
 ];
-let currentWordIndex = 0;
-function showChat() {
-  maleBubble.textContent = loveWords[currentWordIndex].male;
-  femaleBubble.textContent = loveWords[currentWordIndex].female;
+let currentWordIndex=0;
+function positionBubbles(){
+  const mr=maleChar.getBoundingClientRect();
+  const fr=femaleChar.getBoundingClientRect();
+  maleBubble.style.left=(mr.left+mr.width*0.3)+'px';
+  maleBubble.style.top=(mr.top+10)+'px';
+  femaleBubble.style.left=(fr.left+fr.width*0.5)+'px';
+  femaleBubble.style.top=(fr.top+10)+'px';
+}
+function showChat(){
+  positionBubbles();
+  maleBubble.textContent=loveWords[currentWordIndex].male;
+  femaleBubble.textContent=loveWords[currentWordIndex].female;
   maleBubble.classList.add('show');
   setTimeout(()=>femaleBubble.classList.add('show'),800);
 }
 
-document.querySelectorAll('.mode-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const mode = btn.dataset.mode;
+document.querySelectorAll('.mode-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const mode=btn.dataset.mode;
     document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
-    if(mode==='letter'){ resetCharacters(); document.getElementById('letterMode').classList.add('show'); return; }
-    btn.classList.add('active');
-    resetCharacters();
+    if(mode==='letter'){resetCharacters();document.getElementById('letterMode').classList.add('show');return;}
+    btn.classList.add('active');resetCharacters();
 
-    if(mode==='hug') {
-      // 紧紧相拥：两人向中间移动到身体紧贴，男生双臂环绕女生背部，女生双臂环绕男生背部
-      maleChar.style.transform = 'translateX(48px) rotate(-2deg)';
-      femaleChar.style.transform = 'translateX(-48px) rotate(2deg)';
-      // 男生右臂环绕女生后背（向右上方伸，环住对方）
-      maleRightArm.style.transform = 'rotate(-55deg) translateX(20px) translateY(-15px)';
-      // 男生左臂也环住
-      maleLeftArm.style.transform = 'rotate(40deg) translateX(-10px) translateY(-8px)';
-      // 女生左臂环绕男生后背
-      femaleLeftArm.style.transform = 'rotate(55deg) translateX(-20px) translateY(-15px)';
-      // 女生右臂也环住
-      femaleRightArm.style.transform = 'rotate(-40deg) translateX(10px) translateY(-8px)';
+    if(mode==='hug'){
+      // 紧紧相拥：两人靠近，手臂环绕对方
+      maleChar.style.transform='translateX(25px)';
+      femaleChar.style.transform='translateX(-25px)';
+      // 男生右臂环绕女生
+      maleRightArm.style.transform='rotate(-50deg) translateX(15px) translateY(-10px)';
+      maleLeftArm.style.transform='rotate(35deg) translateX(-8px)';
+      // 女生左臂环绕男生
+      femaleLeftArm.style.transform='rotate(50deg) translateX(-15px) translateY(-10px)';
+      femaleRightArm.style.transform='rotate(-35deg) translateX(8px)';
       startHearts();
     }
-    else if(mode==='kiss') {
+    else if(mode==='kiss'){
       kissHint.classList.add('show');
-      setTimeout(()=>{ positionDots(); dots.forEach(d=>d.classList.add('show')); },500);
+      setTimeout(()=>{positionDots();dots.forEach(d=>d.classList.add('show'));},500);
       startHearts();
     }
-    else if(mode==='chat') {
+    else if(mode==='chat'){
       // 女生头靠男生肩膀
-      femaleChar.style.transform = 'translateX(-25px) rotate(-6deg)';
+      femaleChar.style.transform='translateX(-18px) rotate(-5deg)';
       changeBtn.classList.add('show');
-      currentWordIndex = Math.floor(Math.random()*loveWords.length);
+      currentWordIndex=Math.floor(Math.random()*loveWords.length);
       showChat();
       startHearts();
     }
   });
 });
 
-changeBtn.addEventListener('click', () => {
-  maleBubble.classList.remove('show'); femaleBubble.classList.remove('show');
-  currentWordIndex = (currentWordIndex+1)%loveWords.length;
+changeBtn.addEventListener('click',()=>{
+  maleBubble.classList.remove('show');femaleBubble.classList.remove('show');
+  currentWordIndex=(currentWordIndex+1)%loveWords.length;
   setTimeout(showChat,300);
 });
 
-// Kiss点定位
-function positionDots() {
-  const stage = document.getElementById('stage');
-  const sr = stage.getBoundingClientRect();
-  const mr = maleChar.getBoundingClientRect();
-  const fr = femaleChar.getBoundingClientRect();
-  const mcx = mr.left-sr.left+mr.width/2;
-  const mht = mr.top-sr.top+mr.height*0.14;
-  const fcx = fr.left-sr.left+fr.width/2;
-  const fht = fr.top-sr.top+fr.height*0.14;
-  document.getElementById('dotMaleForehead').style.left=(mcx-8)+'px';
-  document.getElementById('dotMaleForehead').style.top=(mht+25)+'px';
-  document.getElementById('dotMaleCheek').style.left=(mcx+28)+'px';
-  document.getElementById('dotMaleCheek').style.top=(mht+62)+'px';
-  document.getElementById('dotMaleMouth').style.left=(mcx-8)+'px';
-  document.getElementById('dotMaleMouth').style.top=(mht+82)+'px';
-  document.getElementById('dotFemaleForehead').style.left=(fcx-8)+'px';
-  document.getElementById('dotFemaleForehead').style.top=(fht+25)+'px';
-  document.getElementById('dotFemaleCheek').style.left=(fcx-36)+'px';
-  document.getElementById('dotFemaleCheek').style.top=(fht+62)+'px';
-  document.getElementById('dotFemaleMouth').style.left=(fcx-8)+'px';
-  document.getElementById('dotFemaleMouth').style.top=(fht+82)+'px';
+// Kiss点定位（背影：头部、脸颊侧、耳朵）
+function positionDots(){
+  const scene=document.getElementById('scene');
+  const sr=scene.getBoundingClientRect();
+  const mr=maleChar.getBoundingClientRect();
+  const fr=femaleChar.getBoundingClientRect();
+  // 男生头部点位
+  const mcx=mr.left-sr.left+mr.width/2;
+  const mtop=mr.top-sr.top;
+  document.getElementById('dotMaleHead').style.left=(mcx-8)+'px';
+  document.getElementById('dotMaleHead').style.top=(mtop+15)+'px';
+  document.getElementById('dotMaleCheek').style.left=(mcx+25)+'px';
+  document.getElementById('dotMaleCheek').style.top=(mtop+35)+'px';
+  document.getElementById('dotMaleEar').style.left=(mcx+30)+'px';
+  document.getElementById('dotMaleEar').style.top=(mtop+25)+'px';
+  // 女生头部点位
+  const fcx=fr.left-sr.left+fr.width/2;
+  const ftop=fr.top-sr.top;
+  document.getElementById('dotFemaleHead').style.left=(fcx-8)+'px';
+  document.getElementById('dotFemaleHead').style.top=(ftop+15)+'px';
+  document.getElementById('dotFemaleCheek').style.left=(fcx-33)+'px';
+  document.getElementById('dotFemaleCheek').style.top=(ftop+35)+'px';
+  document.getElementById('dotFemaleEar').style.left=(fcx-38)+'px';
+  document.getElementById('dotFemaleEar').style.top=(ftop+25)+'px';
 }
 
-// Kiss点击 - 真亲到部位
-dots.forEach(dot => {
-  dot.addEventListener('click', () => {
-    const target = dot.dataset.target;
-    const part = dot.dataset.part;
+// Kiss点击
+dots.forEach(dot=>{
+  dot.addEventListener('click',()=>{
+    const target=dot.dataset.target;
+    const part=dot.dataset.part;
     kissHint.classList.remove('show');
     dots.forEach(d=>d.classList.remove('show'));
 
-    // 根据点击部位调整亲吻距离和角度
-    let moveX, tilt;
-    if(part==='forehead'){ moveX = 72; tilt = -10; }
-    else if(part==='cheek'){ moveX = 65; tilt = -6; }
-    else { moveX = 60; tilt = 0; } // mouth
+    let moveX,tilt;
+    if(part==='head'){moveX=42;tilt=-6;}
+    else if(part==='cheek'){moveX=38;tilt=-4;}
+    else{moveX=35;tilt=-2;}
 
-    if(target==='female') {
-      // 男生亲女生：男生向女生移动，身体倾斜
-      maleChar.style.transition = 'transform 0.5s cubic-bezier(.34,1.56,.64,1)';
-      maleChar.style.transform = `translateX(${moveX}px) rotate(${tilt}deg)`;
-      // 男生手臂支撑/环绕
-      maleRightArm.style.transform = 'rotate(-20deg) translateX(10px)';
+    if(target==='female'){
+      // 男生亲女生：男生转头靠近
+      maleChar.style.transition='transform 0.5s cubic-bezier(.34,1.56,.64,1)';
+      maleChar.style.transform=`translateX(${moveX}px) rotate(${tilt}deg)`;
+      maleRightArm.style.transform='rotate(-30deg) translateX(10px)';
       setTimeout(()=>{
-        // 亲到了，爆爱心
-        const fr = femaleChar.getBoundingClientRect();
-        const stage = document.getElementById('stage').getBoundingClientRect();
-        const kissX = fr.left - stage.left + fr.width/2;
-        const kissY = fr.top - stage.top + fr.height*0.3;
-        for(let i=0;i<5;i++) setTimeout(()=>spawnHeart(kissX-30+Math.random()*60, kissY+Math.random()*30), i*100);
+        const fr=femaleChar.getBoundingClientRect();
+        const kx=fr.left+fr.width/2;
+        const ky=fr.top+fr.height*0.15;
+        for(let i=0;i<5;i++)setTimeout(()=>spawnHeart(kx-25+Math.random()*50,ky+Math.random()*25),i*100);
       },450);
       setTimeout(()=>{
-        maleChar.style.transform = '';
-        maleRightArm.style.transform = '';
-        dots.forEach(d=>d.classList.add('show'));
-        kissHint.classList.add('show');
+        maleChar.style.transform='';maleRightArm.style.transform='';
+        dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');
       },1600);
-    } else {
-      // 女生亲男生
-      femaleChar.style.transition = 'transform 0.5s cubic-bezier(.34,1.56,.64,1)';
-      femaleChar.style.transform = `translateX(-${moveX}px) rotate(${-tilt}deg)`;
-      femaleLeftArm.style.transform = 'rotate(20deg) translateX(-10px)';
+    }else{
+      femaleChar.style.transition='transform 0.5s cubic-bezier(.34,1.56,.64,1)';
+      femaleChar.style.transform=`translateX(-${moveX}px) rotate(${-tilt}deg)`;
+      femaleLeftArm.style.transform='rotate(30deg) translateX(-10px)';
       setTimeout(()=>{
-        const mr = maleChar.getBoundingClientRect();
-        const stage = document.getElementById('stage').getBoundingClientRect();
-        const kissX = mr.left - stage.left + mr.width/2;
-        const kissY = mr.top - stage.top + mr.height*0.3;
-        for(let i=0;i<5;i++) setTimeout(()=>spawnHeart(kissX-30+Math.random()*60, kissY+Math.random()*30), i*100);
+        const mr=maleChar.getBoundingClientRect();
+        const kx=mr.left+mr.width/2;
+        const ky=mr.top+mr.height*0.15;
+        for(let i=0;i<5;i++)setTimeout(()=>spawnHeart(kx-25+Math.random()*50,ky+Math.random()*25),i*100);
       },450);
       setTimeout(()=>{
-        femaleChar.style.transform = '';
-        femaleLeftArm.style.transform = '';
-        dots.forEach(d=>d.classList.add('show'));
-        kissHint.classList.add('show');
+        femaleChar.style.transform='';femaleLeftArm.style.transform='';
+        dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');
       },1600);
     }
   });
 });
 
 // 情书
-const envelopeWrapper = document.getElementById('envelopeWrapper');
-const envelope = document.getElementById('envelope');
-const letterPaper = document.getElementById('letterPaper');
-const closeLetter = document.getElementById('closeLetter');
-const letterMode = document.getElementById('letterMode');
-envelopeWrapper.addEventListener('click', () => { envelope.classList.add('open'); setTimeout(()=>letterPaper.classList.add('show'),400); });
-closeLetter.addEventListener('click', (e) => { e.stopPropagation(); letterPaper.classList.remove('show'); setTimeout(()=>envelope.classList.remove('open'),600); });
-letterMode.addEventListener('click', (e) => { if(e.target===letterMode && letterPaper.classList.contains('show')){ letterPaper.classList.remove('show'); setTimeout(()=>envelope.classList.remove('open'),600);} });
-document.addEventListener('keydown', (e) => { if(e.key==='Escape' && letterMode.classList.contains('show')){ if(letterPaper.classList.contains('show')){letterPaper.classList.remove('show');setTimeout(()=>envelope.classList.remove('open'),600);}else{letterMode.classList.remove('show');} } });
-window.addEventListener('resize', () => { if(document.querySelector('.kiss-dot.show')) positionDots(); });
+const envelopeWrapper=document.getElementById('envelopeWrapper');
+const envelope=document.getElementById('envelope');
+const letterPaper=document.getElementById('letterPaper');
+const closeLetter=document.getElementById('closeLetter');
+const letterMode=document.getElementById('letterMode');
+envelopeWrapper.addEventListener('click',()=>{envelope.classList.add('open');setTimeout(()=>letterPaper.classList.add('show'),400);});
+closeLetter.addEventListener('click',(e)=>{e.stopPropagation();letterPaper.classList.remove('show');setTimeout(()=>envelope.classList.remove('open'),600);});
+letterMode.addEventListener('click',(e)=>{if(e.target===letterMode&&letterPaper.classList.contains('show')){letterPaper.classList.remove('show');setTimeout(()=>envelope.classList.remove('open'),600);}});
+document.addEventListener('keydown',(e)=>{if(e.key==='Escape'&&letterMode.classList.contains('show')){if(letterPaper.classList.contains('show')){letterPaper.classList.remove('show');setTimeout(()=>envelope.classList.remove('open'),600);}else{letterMode.classList.remove('show');}}});
+window.addEventListener('resize',()=>{if(document.querySelector('.kiss-dot.show'))positionDots();if(maleBubble.classList.contains('show'))positionBubbles();});
 </script>
 </body>
 </html>
