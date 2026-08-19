@@ -25,6 +25,8 @@
   .couple{position:relative;z-index:8;display:flex;align-items:flex-end;gap:10px;margin-bottom:60px;}
   .hug-image{position:absolute;bottom:60px;left:50%;transform:translateX(-50%) scale(0.9);height:52vh;max-height:460px;width:auto;opacity:0;pointer-events:none;z-index:9;filter:drop-shadow(0 8px 25px rgba(0,0,0,.4));transition:opacity 0.5s ease, transform 0.5s ease;}
   .hug-image.show{opacity:1;transform:translateX(-50%) scale(1);animation:hugBreathe 3s ease-in-out infinite 0.5s;}
+  .kiss-image{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);height:52vh;max-height:460px;width:auto;opacity:0;pointer-events:none;z-index:9;filter:drop-shadow(0 8px 25px rgba(0,0,0,.4));transition:opacity 0.3s ease;}
+  .kiss-image.show{opacity:1;}
   .character{position:relative;transition:transform 0.6s cubic-bezier(.34,1.56,.64,1);display:flex;align-items:flex-end;}
   .character img{display:block;height:52vh;max-height:460px;width:auto;filter:drop-shadow(0 8px 25px rgba(0,0,0,.4));animation:idleFloat 4s ease-in-out infinite;}
   .character .img-side{display:none;}
@@ -118,6 +120,7 @@
       </div>
     </div>
     <img class="hug-image" id="hugImage" src="hug_couple.png" alt="拥抱" draggable="false">
+    <img class="kiss-image" id="kissImage" src="" alt="亲吻" draggable="false">
     <div class="kiss-dot" id="dotMaleForehead" data-target="male" data-part="forehead"></div>
     <div class="kiss-dot" id="dotMaleCheek" data-target="male" data-part="cheek"></div>
     <div class="kiss-dot" id="dotMaleMouth" data-target="male" data-part="mouth"></div>
@@ -184,8 +187,8 @@ const maleBubble=document.getElementById('maleBubble');
 const femaleBubble=document.getElementById('femaleBubble');
 const changeBtn=document.getElementById('changeBtn');
 const kissHint=document.getElementById('kissHint');
-const dots=document.querySelectorAll('.kiss-dot');const hugImage=document.getElementById('hugImage');let hugTimer1=null,hugTimer2=null;
-function resetAll(){if(hugTimer1)clearTimeout(hugTimer1);if(hugTimer2)clearTimeout(hugTimer2);hugImage.classList.remove('show');maleChar.className='character char-male';femaleChar.className='character char-female';maleBubble.classList.remove('show');femaleBubble.classList.remove('show');changeBtn.classList.remove('show');kissHint.classList.remove('show');dots.forEach(d=>d.classList.remove('show'));stopHearts();}
+const dots=document.querySelectorAll('.kiss-dot');const hugImage=document.getElementById('hugImage');const kissImage=document.getElementById('kissImage');let kissTimer=null;let hugTimer1=null,hugTimer2=null;
+function resetAll(){if(hugTimer1)clearTimeout(hugTimer1);if(hugTimer2)clearTimeout(hugTimer2);hugImage.classList.remove('show');kissImage.classList.remove('show');kissImage.src='';if(kissTimer)clearTimeout(kissTimer);maleChar.className='character char-male';femaleChar.className='character char-female';maleBubble.classList.remove('show');femaleBubble.classList.remove('show');changeBtn.classList.remove('show');kissHint.classList.remove('show');dots.forEach(d=>d.classList.remove('show'));stopHearts();}
 const loveWords=[{male:'我好想你。',female:'一日不见，如三月兮。'},{male:'你今天真好看。',female:'你也是，我的小狗最帅。'},{male:'今晚的月亮真美。',female:'风也温柔，因为想你。'},{male:'在干嘛呢？',female:'在想你呀，笨蛋。'},{male:'想吃什么我给你点。',female:'想吃你做的爱心便当。'},{male:'早点睡，别熬夜。',female:'你也是，梦里见。'},{male:'今天累不累？',female:'看到你就不累了。'},{male:'我喜欢你。',female:'我更喜欢你，我的小狗。'}];
 let currentWordIndex=0;
 function positionBubbles(){const mr=maleChar.getBoundingClientRect();const fr=femaleChar.getBoundingClientRect();maleBubble.style.left=(mr.left+mr.width*0.3)+'px';maleBubble.style.top=(mr.top+10)+'px';femaleBubble.style.left=(fr.left+fr.width*0.5)+'px';femaleBubble.style.top=(fr.top+10)+'px';}
@@ -207,8 +210,11 @@ document.getElementById('dotFemaleForehead').style.left=(fLeft+fr.width*0.25)+'p
 document.getElementById('dotFemaleCheek').style.left=(fLeft+fr.width*0.15)+'px';document.getElementById('dotFemaleCheek').style.top=(fTop+fr.height*0.17)+'px';
 document.getElementById('dotFemaleMouth').style.left=(fLeft+fr.width*0.12)+'px';document.getElementById('dotFemaleMouth').style.top=(fTop+fr.height*0.23)+'px';}
 dots.forEach(dot=>{dot.addEventListener('click',()=>{const target=dot.dataset.target;const part=dot.dataset.part;kissHint.classList.remove('show');dots.forEach(d=>d.classList.remove('show'));
-if(target==='female'){maleChar.classList.add('kiss-male');setTimeout(()=>{const fr=femaleChar.getBoundingClientRect();const kx=fr.left+fr.width*0.15;const ky=fr.top+fr.height*0.18;for(let i=0;i<6;i++)setTimeout(()=>spawnHeart(kx-25+Math.random()*50,ky+Math.random()*25),i*100);},450);setTimeout(()=>{maleChar.classList.remove('kiss-male');dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');},1600);}
-else{femaleChar.classList.add('kiss-female');setTimeout(()=>{const mr=maleChar.getBoundingClientRect();const kx=mr.left+mr.width*0.85;const ky=mr.top+mr.height*0.18;for(let i=0;i<6;i++)setTimeout(()=>spawnHeart(kx-25+Math.random()*50,ky+Math.random()*25),i*100);},450);setTimeout(()=>{femaleChar.classList.remove('kiss-female');dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');},1600);}});});
+const imgMap={male:{forehead:'kiss_f_forehead.png',cheek:'kiss_f_cheek.png',mouth:'kiss_f_mouth.png'},female:{forehead:'kiss_m_forehead.png',cheek:'kiss_m_cheek.png',mouth:'kiss_m_mouth.png'}};
+kissImage.src=imgMap[target][part];
+maleChar.classList.add('fade-out');femaleChar.classList.add('fade-out');
+setTimeout(function(){kissImage.classList.add('show');},200);
+kissTimer=setTimeout(function(){kissImage.classList.remove('show');maleChar.classList.remove('fade-out');femaleChar.classList.remove('fade-out');setTimeout(function(){positionDots();dots.forEach(d=>d.classList.add('show'));kissHint.classList.add('show');},300);},1800);});});
 const envelopeWrapper=document.getElementById('envelopeWrapper');
 const envelope=document.getElementById('envelope');
 const letterPaper=document.getElementById('letterPaper');
