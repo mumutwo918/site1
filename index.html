@@ -124,8 +124,8 @@
     </div>
     <img class="hug-image" id="hugImage" src="hug_couple.png" alt="拥抱" draggable="false">
     <img class="kiss-image" id="kissImage" src="" alt="亲吻" draggable="false">
-    <div class="kiss-dot" id="dotMaleMouth" data-target="male" data-part="mouth"></div>
-    <div class="kiss-dot" id="dotFemaleMouth" data-target="female" data-part="mouth"></div>
+    <div class="kiss-dot" id="dotMaleMouth" data-target="male" data-part="mouth" onclick="doKiss('male')"></div>
+    <div class="kiss-dot" id="dotFemaleMouth" data-target="female" data-part="mouth" onclick="doKiss('female')"></div>
     <div class="kiss-hint" id="kissHint">点击嘴唇亲吻 ♡</div>
   </div>
   <div class="speech-bubble" id="maleBubble"></div>
@@ -204,17 +204,16 @@ const fLeft=fr.left-sr.left;fTop=fr.top-sr.top;
 document.getElementById('dotMaleMouth').style.left=(mLeft+mr.width*0.86)+'px';document.getElementById('dotMaleMouth').style.top=(mTop+mr.height*0.26)+'px';
 // 女生侧面朝左，嘴唇在面部左侧
 document.getElementById('dotFemaleMouth').style.left=(fLeft+fr.width*0.14)+'px';document.getElementById('dotFemaleMouth').style.top=(fTop+fr.height*0.26)+'px';}
-dots.forEach(dot=>{dot.onclick=function(){
-const target=dot.dataset.target;
+function doKiss(target){
 maleChar.style.display='none';
 femaleChar.style.display='none';
 kissHint.style.display='none';
-dots.forEach(d=>d.style.display='none');
+document.querySelectorAll('.kiss-dot').forEach(d=>d.style.display='none');
 const ki=document.getElementById('kissImage');
 ki.src=(target==='male')?'kiss_f_mouth.png':'kiss_m_mouth.png';
 setTimeout(function(){ki.style.opacity='1';},300);
-kissTimer=setTimeout(function(){ki.style.opacity='0';ki.src='';maleChar.style.display='';femaleChar.style.display='';setTimeout(function(){positionDots();dots.forEach(d=>d.style.display='');kissHint.style.display='';},300);},1800);
-};});
+kissTimer=setTimeout(function(){ki.style.opacity='0';ki.src='';maleChar.style.display='';femaleChar.style.display='';setTimeout(function(){positionDots();document.querySelectorAll('.kiss-dot').forEach(d=>d.style.display='');kissHint.style.display='';},300);},1800);
+}
 const envelopeWrapper=document.getElementById('envelopeWrapper');
 const envelope=document.getElementById('envelope');
 const letterPaper=document.getElementById('letterPaper');
