@@ -23,9 +23,8 @@
   .roof-wrapper{position:absolute;bottom:0;left:0;width:100%;height:180px;z-index:5;display:flex;justify-content:center;}
   .roof-svg{width:100%;max-width:900px;height:100%;overflow:visible;}
   .couple{position:relative;z-index:8;display:flex;align-items:flex-end;gap:10px;margin-bottom:60px;}
-  .hug-image{display:none;height:52vh;max-height:460px;width:auto;filter:drop-shadow(0 8px 25px rgba(0,0,0,.4));animation:idleFloat 4s ease-in-out infinite;}
-  .couple.hug-mode .character{display:none;}
-  .couple.hug-mode .hug-image{display:block;}
+  .hug-image{position:absolute;bottom:60px;left:50%;transform:translateX(-50%) scale(0.9);height:52vh;max-height:460px;width:auto;opacity:0;pointer-events:none;z-index:9;filter:drop-shadow(0 8px 25px rgba(0,0,0,.4));transition:opacity 0.5s ease, transform 0.5s ease;}
+  .hug-image.show{opacity:1;transform:translateX(-50%) scale(1);animation:hugBreathe 3s ease-in-out infinite 0.5s;}
   .character{position:relative;transition:transform 0.6s cubic-bezier(.34,1.56,.64,1);display:flex;align-items:flex-end;}
   .character img{display:block;height:52vh;max-height:460px;width:auto;filter:drop-shadow(0 8px 25px rgba(0,0,0,.4));animation:idleFloat 4s ease-in-out infinite;}
   .character .img-side{display:none;}
@@ -39,8 +38,6 @@
   .character.kiss-female{transform:translateX(-60px);}
   .character.chat-female{transform:translateX(-25px) rotate(-6deg);}
   .character.fade-out{opacity:0;transition:opacity 0.4s ease;}
-  .hug-image{position:absolute;bottom:60px;left:50%;transform:translateX(-50%) scale(0.9);height:52vh;max-height:460px;width:auto;opacity:0;pointer-events:none;z-index:9;filter:drop-shadow(0 8px 25px rgba(0,0,0,.4));transition:opacity 0.5s ease, transform 0.5s ease;}
-  .hug-image.show{opacity:1;transform:translateX(-50%) scale(1);animation:hugBreathe 3s ease-in-out infinite 0.5s;}
   @keyframes hugBreathe{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.02)}}
   .buttons{position:absolute;bottom:3%;left:50%;transform:translateX(-50%);display:flex;gap:14px;z-index:20;flex-wrap:wrap;justify-content:center;}
   .mode-btn{padding:11px 22px;border:none;border-radius:30px;font-family:'ZCOOL KuaiLe',sans-serif;font-size:1.05em;white-space:nowrap;background:linear-gradient(135deg,var(--pink),var(--pink-deep));color:#fff;cursor:pointer;box-shadow:0 4px 15px rgba(232,90,127,.4),inset 0 1px 0 rgba(255,255,255,.3);transition:all .3s ease;}
@@ -110,7 +107,6 @@
       </svg>
     </div>
     <div class="couple" id="couple">
-      <img class="hug-image" src="hug_resized.png" alt="拥抱" draggable="false">
       <div class="character char-male" id="maleChar">
         <img class="img-front" src="male_resized.png" alt="男生" draggable="false">
         <img class="img-side" src="male_side_resized.png" alt="男生侧面" draggable="false">
